@@ -64,7 +64,9 @@ export default function Header() {
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
       >
-        <span className="text-violet-500 dark:text-[#29oc5e]">N4M154</span>
+        <span className="text-violet-700 font-thin dark:text-violet-300">
+          N4M154
+        </span>
       </Link>
       <form onSubmit={handleSubmit}>
         <TextInput
