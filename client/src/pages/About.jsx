@@ -16,7 +16,7 @@ export default function About() {
         </div>
 
         {/* Main Content */}
-        <div className="p-8 bg-gradient-to-b from-violet-200 to-violet-100 dark:from-transparent dark:to-black shadow-xl shadow-black/50 backdrop-blur-sm rounded-xl dark:shadow-violet-800/50">
+        <div className="p-8 bg-gradient-to-b from-violet-200 to-violet-100 dark:from-transparent dark:to-black shadow-xl shadow-black/50 backdrop-blur-sm rounded-xl dark:shadow-violet-800/20">
           <div className="prose prose-lg max-w-none">
             <p className="leading-relaxed text-card-foreground dark:text-white">
               Welcome to Harmonia! This blog was created by Sahand Ghavidel as a

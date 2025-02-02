@@ -55,16 +55,24 @@ export default function DashSavedPosts() {
     <div className="table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500">
       {savedPosts.length > 0 ? (
         <>
-          <Table hoverable className="shadow-md">
+          <Table className="shadow-lg dark:shadow-black">
             <Table.Head>
-              <Table.HeadCell>Date Saved</Table.HeadCell>
-              <Table.HeadCell>Post Image</Table.HeadCell>
-              <Table.HeadCell>Post Title</Table.HeadCell>
-              <Table.HeadCell>Category</Table.HeadCell>
+              <Table.HeadCell className="bg-violet-50 dark:bg-black">
+                Date Saved
+              </Table.HeadCell>
+              <Table.HeadCell className="bg-violet-50 dark:bg-black">
+                Post Image
+              </Table.HeadCell>
+              <Table.HeadCell className="bg-violet-50 dark:bg-black">
+                Post Title
+              </Table.HeadCell>
+              <Table.HeadCell className="bg-violet-50 dark:bg-black">
+                Category
+              </Table.HeadCell>
             </Table.Head>
             {savedPosts.map((savedPost) => (
               <Table.Body className="divide-y" key={savedPost._id}>
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                <Table.Row className="bg-white dark:border-gray-700 dark:bg-[#18181b]">
                   <Table.Cell>
                     {new Date(savedPost.saveDate).toLocaleDateString()}
                   </Table.Cell>

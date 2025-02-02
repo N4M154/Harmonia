@@ -73,7 +73,7 @@
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 bg-violet-50 dark:bg-[#18181b] border-t-2 border-violet-200 dark:border-violet-500 shadow md:flex md:items-center md:justify-between md:p-6">
+    <footer className="w-full p-4 bg-violet-50 dark:bg-[#18181b] border-t-2 border-violet-200 dark:border-gray-800 shadow md:flex md:items-center md:justify-between md:p-6">
       <span className="text-sm text-black sm:text-center dark:text-violet-300">
         © 2025 Harmonia. All Rights Reserved.
       </span>

@@ -59,7 +59,7 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-2 border-violet-200 dark:border-violet-700 bg-violet-100 dark:bg-[#18181b]">
+    <Navbar className="border-b-2 border-violet-200 dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
