@@ -176,7 +176,7 @@ export default function SignIn() {
         </div>
 
         {/* Form */}
-        <div className="w-1/2 flex dark:bg-gradient-to-b dark:from-[#18181b] dark:to-black justify-center rounded-3xl shadow-xl p-6 dark:shadow-violet-950/50">
+        <div className="w-1/2 flex dark:bg-gradient-to-b dark:from-[#18181b] dark:to-black justify-center rounded-3xl shadow-xl p-6 dark:shadow-violet-950/50 shadow-black">
           <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
             <div>
               <Label

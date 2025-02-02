@@ -38,21 +38,20 @@ export default function SignUp() {
     }
   };
   return (
-    <div className="min-h-screen bg-violet-50 dark:bg-[#18181b]">
-      <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
-        {/* left */}
-        <div className="flex-1">
+    <div className="min-h-screen bg-violet-50 dark:bg-[#18181b] pt-28">
+      <div className="flex flex-col items-center p-3 max-w-3xl mx-auto gap-5">
+        {/* top */}
+        <div className="w-full text-center mb-7">
           <Link to="/" className="font-bold dark:text-white text-4xl">
             <span className="px-2 py-1 rounded-lg text-black dark:text-gray-300">
-              Welcome to
-              <span className="text-violet-700"> Harmonia!</span>
+              Welcome to <span className="text-violet-500">Harmonia</span>
             </span>
           </Link>
         </div>
-        {/* right */}
+        {/* form */}
 
-        <div className="flex-1 rounded-3xl shadow-lg p-6 dark:shadow-violet-950/50">
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <div className="w-1/2 flex dark:bg-gradient-to-b dark:from-[#18181b] dark:to-black justify-center rounded-3xl shadow-xl p-6 dark:shadow-violet-950/50 shadow-black">
+          <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
             <div>
               <Label
                 value="Your username"
@@ -103,23 +102,26 @@ export default function SignUp() {
                 "Sign Up"
               )}
             </Button>
+            <span className="text-center text-sm dark:text-gray-400">
+              or continue with
+            </span>
             <OAuth />
           </form>
-          <div className="flex gap-2 text-sm mt-5 dark:text-white">
-            <span>Have an account?</span>
-            <Link
-              to="/sign-in"
-              className="text-violet-500 font-bold hover:underline"
-            >
-              Sign In
-            </Link>
-          </div>
-          {errorMessage && (
-            <Alert className="mt-5" color="failure">
-              {errorMessage}
-            </Alert>
-          )}
         </div>
+        <div className="flex gap-2 text-sm mt-5 dark:text-white">
+          <span>Have an account?</span>
+          <Link
+            to="/sign-in"
+            className="text-violet-500 font-bold hover:underline"
+          >
+            Sign In
+          </Link>
+        </div>
+        {errorMessage && (
+          <Alert className="mt-5" color="failure">
+            {errorMessage}
+          </Alert>
+        )}
       </div>
     </div>
   );
