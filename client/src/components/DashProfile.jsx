@@ -167,8 +167,10 @@ export default function DashProfile() {
     }
   };
   return (
-    <div className="max-w-lg mx-auto p-3 w-full">
-      <h1 className="my-7 text-center font-semibold text-3xl">Profile</h1>
+    <div className="max-w-lg mx-auto p-5 mb-5 mt-5 w-full rounded-xl shadow-xl shadow-black dark:shadow-violet-700/20">
+      <h1 className="my-7 text-center font-semibold text-3xl dark:text-violet-400">
+        Profile
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="file"
@@ -205,7 +207,7 @@ export default function DashProfile() {
           <img
             src={imageFileUrl || currentUser.profilePicture}
             alt="user"
-            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
+            className={`rounded-full w-full h-full object-cover border-[5px] border-violet-100 dark:border-violet-700 ${
               imageFileUploadProgress &&
               imageFileUploadProgress < 100 &&
               "opacity-60"
@@ -237,8 +239,7 @@ export default function DashProfile() {
         />
         <Button
           type="submit"
-          gradientDuoTone="purpleToBlue"
-          outline
+          className="bg-violet-400 dark:bg-violet-700 dark:hover:!bg-violet-800 hover:!bg-violet-500 text-black dark:text-white"
           disabled={loading || imageFileUploading}
         >
           {loading ? "Loading..." : "Update"}
@@ -247,8 +248,7 @@ export default function DashProfile() {
           <Link to={"/create-post"}>
             <Button
               type="button"
-              gradientDuoTone="purpleToPink"
-              className="w-full"
+              className="w-full bg-transparent border-2 border-violet-700 bg-violet-50 dark:bg-transparent text-black hover:!bg-violet-200 dark:hover:!bg-gray-800 dark:text-violet-100"
             >
               Create a post
             </Button>
@@ -259,7 +259,10 @@ export default function DashProfile() {
         <span onClick={() => setShowModal(true)} className="cursor-pointer">
           Delete Account
         </span>
-        <span onClick={handleSignout} className="cursor-pointer">
+        <span
+          onClick={handleSignout}
+          className="cursor-pointer text-violet-700 font-bold hover:underline"
+        >
           Sign Out
         </span>
       </div>
@@ -285,8 +288,8 @@ export default function DashProfile() {
         size="md"
       >
         <Modal.Header />
-        <Modal.Body>
-          <div className="text-center">
+        <Modal.Body className="bg-violet-100 dark:bg-[#18181b]">
+          <div className="text-center bg-violet-100 dark:bg-[#18181b]">
             <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
             <h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
               Are you sure you want to delete your account?

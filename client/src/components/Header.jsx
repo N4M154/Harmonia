@@ -100,7 +100,7 @@ export default function Header() {
               label={
                 <Avatar alt="user" img={currentUser.profilePicture} rounded />
               }
-              className="bg-violet-200/20 dark:bg-[#18181b]"
+              className="bg-violet-50 dark:bg-[#18181b]"
             >
               <Dropdown.Header>
                 <span className="block text-sm">@{currentUser.username}</span>

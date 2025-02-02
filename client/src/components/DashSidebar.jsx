@@ -43,7 +43,7 @@ export default function DashSidebar() {
     }
   };
   return (
-    <Sidebar className="w-full md:w-56">
+    <Sidebar className="w-full md:w-56 dark:bg-black">
       <Sidebar.Items>
         <Sidebar.ItemGroup className="flex flex-col gap-1">
           {currentUser && currentUser.isAdmin && (
@@ -51,6 +51,11 @@ export default function DashSidebar() {
               <Sidebar.Item
                 active={tab === "dash" || !tab}
                 icon={HiChartPie}
+                className={
+                  tab === "dash" || !tab
+                    ? "bg-violet-200 dark:bg-violet-800"
+                    : "bg-white dark:bg-black"
+                }
                 as="div"
               >
                 Dashboard
@@ -63,6 +68,11 @@ export default function DashSidebar() {
               icon={HiUser}
               label={currentUser.isAdmin ? "Admin" : "User"}
               labelColor="dark"
+              className={
+                tab === "profile" || !tab
+                  ? "bg-violet-200 dark:bg-violet-800"
+                  : "bg-white dark:bg-black"
+              }
               as="div"
             >
               Profile
@@ -72,8 +82,11 @@ export default function DashSidebar() {
             <Sidebar.Item
               active={tab === "savedposts"}
               icon={HiUser}
-              label={currentUser.isAdmin ? "Admin" : "User"}
-              labelColor="dark"
+              className={
+                tab === "savedposts" || !tab
+                  ? "bg-violet-200 dark:bg-violet-800"
+                  : "bg-white dark:bg-black"
+              }
               as="div"
             >
               Saved Posts
@@ -84,6 +97,11 @@ export default function DashSidebar() {
               <Sidebar.Item
                 active={tab === "posts"}
                 icon={HiDocumentText}
+                className={
+                  tab === "posts" || !tab
+                    ? "bg-violet-200 dark:bg-violet-800"
+                    : "bg-white dark:bg-black"
+                }
                 as="div"
               >
                 Posts
@@ -96,6 +114,11 @@ export default function DashSidebar() {
                 <Sidebar.Item
                   active={tab === "users"}
                   icon={HiOutlineUserGroup}
+                  className={
+                    tab === "users" || !tab
+                      ? "bg-violet-200 dark:bg-violet-800"
+                      : "bg-white dark:bg-black"
+                  }
                   as="div"
                 >
                   Users
@@ -105,6 +128,11 @@ export default function DashSidebar() {
                 <Sidebar.Item
                   active={tab === "comments"}
                   icon={HiAnnotation}
+                  className={
+                    tab === "comments" || !tab
+                      ? "bg-violet-200 dark:bg-violet-800"
+                      : "bg-white dark:bg-black"
+                  }
                   as="div"
                 >
                   Comments
