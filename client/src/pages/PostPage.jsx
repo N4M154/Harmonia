@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 //import CallToAction from "../components/CallToAction";
 import CommentSection from "../components/CommentSection";
 import PostCard from "../components/PostCard";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 
 export default function PostPage() {
   const { postSlug } = useParams();
@@ -103,17 +104,28 @@ export default function PostPage() {
     <div className=" bg-gradient-to-b from-white to-violet-100 dark:from-[#18181b] dark:to-black">
       {" "}
       <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen">
-        <h1 className="text-3xl mt-10 p-3 text-center font-thin max-w-2xl mx-auto lg:text-4xl dark:text-violet-300">
-          {post && post.title}
+        <h1 className="text-3xl mt-10 p-3 font-thin max-w-2xl mx-auto lg:text-4xl dark:text-violet-300 flex justify-between items-center">
+          <span className="mr-5">{post && post.title}</span>
+          <button
+            onClick={isSaved ? handleUnsavePost : handleSavePost}
+            title={
+              isSaved
+                ? "Psst!You've already saved this.Unsave?"
+                : "Save it for later"
+            }
+            // className={`px-4 py-2 rounded-full text-white ${
+            //   isSaved ? "bg-red-500" : "bg-green-500"
+            // }`}
+          >
+            {/* Use the icon instead of text */}
+            {isSaved ? (
+              <FaBookmark className="h-7 w-7 text-red-500 hover:scale-110 transition-all duration-300" />
+            ) : (
+              <FaRegBookmark className="h-7 w-7 text-green-700 hover:scale-110 transition-all duration-300" />
+            )}
+          </button>
         </h1>
-        {/* Save/Unsave Button */}
-        <Button
-          onClick={isSaved ? handleUnsavePost : handleSavePost}
-          color={isSaved ? "red" : "green"}
-          pill
-        >
-          {isSaved ? "Unsave Post" : "Save Post"}
-        </Button>
+
         <div>
           <Link
             to={`/search?category=${post && post.category}`}
