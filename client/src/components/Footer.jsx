@@ -84,7 +84,7 @@ export default function Footer() {
             href="https://github.com/N4M154"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center hover:underline text-black dark:text-violet-600/80"
+            className="flex items-center hover:underline text-black dark:text-violet-400"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -104,12 +104,12 @@ export default function Footer() {
         </li>
         <div className="mr-4 flex items-center">
           <div className="pr-4 mr-4">
-            <p className="font-semibold text-black dark:text-violet-600/80">
+            <p className="font-semibold text-black dark:text-violet-400">
               Contact Us:
             </p>
           </div>
 
-          <div className="flex items-center text-black dark:text-violet-600/80">
+          <div className="flex items-center text-black dark:text-violet-400">
             <a
               href="mailto:email2@namisa.najah.raisa@gmail.com"
               target="_blank"

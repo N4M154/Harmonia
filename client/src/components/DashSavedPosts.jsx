@@ -100,7 +100,7 @@ export default function DashSavedPosts() {
           </Table>
         </>
       ) : (
-        <p>You have not saved any posts yet!</p>
+        <p className="dark:text-gray-400">You have not saved any posts yet!</p>
       )}
 
       <Modal
