@@ -17,15 +17,16 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
-  signoutSuccess,
+  // signoutSuccess,
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function DashProfile() {
   const { currentUser, error, loading } = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -36,7 +37,6 @@ export default function DashProfile() {
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
   const filePickerRef = useRef();
-  const dispatch = useDispatch();
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -75,7 +75,7 @@ export default function DashProfile() {
 
         setImageFileUploadProgress(progress.toFixed(0));
       },
-      (error) => {
+      () => {
         setImageFileUploadError(
           "Could not upload image (File must be less than 2MB)"
         );
@@ -150,22 +150,23 @@ export default function DashProfile() {
     }
   };
 
-  const handleSignout = async () => {
-    try {
-      const res = await fetch("/api/user/signout", {
-        method: "POST",
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        console.log(data.message);
-      } else {
-        dispatch(signoutSuccess());
-        navigate("/");
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const handleSignout = async () => {
+  //   try {
+  //     const res = await fetch("/api/user/signout", {
+  //       method: "POST",
+  //     });
+  //     const data = await res.json();
+  //     if (!res.ok) {
+  //       console.log(data.message);
+  //     } else {
+  //       dispatch(signoutSuccess());
+  //       navigate("/");
+  //     }
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
   return (
     <div className="max-w-lg mx-auto p-5 mb-5 mt-5 w-full rounded-xl shadow-xl shadow-black dark:shadow-violet-700/20">
       <h1 className="my-7 text-center text-3xl dark:text-violet-400 font-thin">
@@ -255,16 +256,17 @@ export default function DashProfile() {
           </Link>
         )}
       </form>
-      <div className="text-red-500 flex justify-between mt-5">
+      {/* <div className="text-red-500 flex justify-between mt-5"> */}
+      <div className="text-red-500 text-center mt-5">
         <span onClick={() => setShowModal(true)} className="cursor-pointer">
           Delete Account
         </span>
-        <span
+        {/* <span
           onClick={handleSignout}
           className="cursor-pointer text-violet-700 font-bold hover:underline"
         >
           Sign Out
-        </span>
+        </span> */}
       </div>
       {updateUserSuccess && (
         <Alert color="success" className="mt-5">
