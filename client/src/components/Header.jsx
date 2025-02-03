@@ -61,7 +61,7 @@ export default function Header() {
   return (
     <Navbar className="border-b-2 border-violet-200 dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
       <Link
-        to="/"
+        to="/home"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
       >
         <span className="text-violet-700 font-thin dark:text-violet-300">
@@ -150,19 +150,19 @@ export default function Header() {
       {/* Navbar Links - Handles Collapsed and Full-Width Modes */}
       <Navbar.Collapse className="bg-transparent">
         <Navbar.Link
-          active={path === "/"}
+          active={path === "/home"}
           as={"div"}
           className={`
             px-3 py-2 rounded-md transition-colors duration-300
             ${isCollapsed ? "text-black dark:text-white" : ""}
             ${
-              path === "/"
+              path === "/home"
                 ? "bg-violet-300 text-white dark:bg-violet-400"
                 : "text-gray-700 hover:bg-violet-300/20 dark:text-gray-300 dark:hover:bg-violet-100/20"
             }
           `}
         >
-          <Link to="/" className="w-full h-full block bg-transparent">
+          <Link to="/home" className="w-full h-full block bg-transparent">
             Home
           </Link>
         </Navbar.Link>

@@ -242,7 +242,7 @@ function Home() {
       {/* Main Content */}
       <section
         ref={mainContentRef}
-        className="min-h-screen bg-violet-100 dark:bg-[#18181b] relative"
+        className="min-h-screen bg-violet-50 dark:bg-[#18181b] relative"
       >
         {/* Blog Posts */}
         <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
