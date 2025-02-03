@@ -21,13 +21,14 @@ export function Landing() {
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-10000 hover:scale-105"
+          className="absolute inset-0 z-0 "
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80')",
+            backgroundImage: "url('/landing.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-gray-900/70"></div>
+          <div className="absolute inset-0 bg-violet-800/40"></div>
         </div>
         <div className="relative container mx-auto px-4 py-32">
           <div className="max-w-3xl transform transition-all duration-700 hover:translate-x-2">
