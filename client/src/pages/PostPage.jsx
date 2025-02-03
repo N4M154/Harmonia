@@ -135,7 +135,7 @@ export default function PostPage() {
             </span>
           </div>
           <div
-            className="p-3 max-w-2xl mx-auto w-full post-content dark:text-violet-500"
+            className="p-3 max-w-2xl mx-auto w-full post-content dark:text-white font-thin"
             dangerouslySetInnerHTML={{ __html: post && post.content }}
           ></div>
           <div className="max-w-4xl mx-auto w-full">

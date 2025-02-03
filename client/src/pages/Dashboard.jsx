@@ -7,6 +7,7 @@ import DashUsers from "../components/DashUsers";
 import DashComments from "../components/DashComments";
 import DashboardComp from "../components/DashboardComp";
 import DashSavedPosts from "../components/DashSavedPosts";
+import DashPostedComments from "../components/DashPostedComments";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -34,8 +35,10 @@ export default function Dashboard() {
       {tab === "comments" && <DashComments />}
       {/* dashboard comp */}
       {tab === "dash" && <DashboardComp />}
-      {/* savedposts */}
+      {/* savedposts by users */}
       {tab === "savedposts" && <DashSavedPosts />}
+      {/*postedcomments by users */}
+      {tab === "postedcomments" && <DashPostedComments />}
     </div>
   );
 }

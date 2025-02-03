@@ -13,7 +13,7 @@ export default function DashComments() {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch(`/api/comment/getcomments`);
+        const res = await fetch(`/api/comment/getcommentsbyUser`);
         const data = await res.json();
         if (res.ok) {
           setComments(data.comments);
@@ -25,7 +25,8 @@ export default function DashComments() {
         console.log(error.message);
       }
     };
-    if (currentUser.isAdmin) {
+
+    if (currentUser) {
       fetchComments();
     }
   }, [currentUser._id]);
@@ -34,7 +35,7 @@ export default function DashComments() {
     const startIndex = comments.length;
     try {
       const res = await fetch(
-        `/api/comment/getcomments?startIndex=${startIndex}`
+        `/api/comment/getcommentsbyUser?startIndex=${startIndex}`
       );
       const data = await res.json();
       if (res.ok) {
@@ -139,7 +140,7 @@ export default function DashComments() {
           )}
         </>
       ) : (
-        <p>You have no comments yet!</p>
+        <p className="text-gray-400">You have no comments yet!</p>
       )}
       <Modal
         show={showModal}
