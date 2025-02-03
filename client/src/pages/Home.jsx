@@ -213,20 +213,20 @@ function Home() {
   };
 
   return (
-    <div className="text-black dark:text-white">
+    <div className="text-violet-700/50 dark:text-white/60">
       {/* Initial View */}
-      <div className="h-screen relative bg-violet-200 dark:bg-black pointer-events-none">
+      <div className="h-screen relative bg-gradient-to-b from-violet-300 to-violet-100 dark:from-[#18181b] dark:to-violet-800 pointer-events-none">
         <div
-          className="absolute inset-0 z-0 opacity-70"
+          className="absolute inset-0 z-0 opacity-70 bg-[url('/gif.gif')] dark:bg-[url('/gif_dark.gif')]"
           style={{
-            backgroundImage:
-              'url("https://i.pinimg.com/originals/b8/ba/79/b8ba798cc393f599e41b7d2a52ea0ee2.gif")',
+            // backgroundImage:
+            //   'url("https://i.pinimg.com/originals/b8/ba/79/b8ba798cc393f599e41b7d2a52ea0ee2.gif")',
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
         <div className="absolute top-0 left-0 z-10 p-8 text-left">
-          <h1 className="text-8xl font-light tracking-wider">Harmonia</h1>
+          <h1 className="text-9xl font-light tracking-wider">Harmonia</h1>
           <div className="flex justify-center mt-4">
             <button
               onClick={handleExplore}
