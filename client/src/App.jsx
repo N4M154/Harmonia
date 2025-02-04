@@ -16,6 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Search from "./pages/Search";
 import Layout from "./components/Layout";
 import Landing from "./pages/Landing";
+import SuggestionForm from "./pages/SuggestionForm";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
+          <Route path="/suggest" element={<SuggestionForm />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
