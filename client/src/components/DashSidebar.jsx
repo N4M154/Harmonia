@@ -10,6 +10,7 @@ import {
   HiBookmark,
 } from "react-icons/hi";
 import { FaBolt } from "react-icons/fa";
+import { SlEnvolopeLetter } from "react-icons/sl";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 // import { signoutSuccess } from "../redux/user/userSlice";
@@ -144,6 +145,22 @@ export default function DashSidebar() {
                 as="div"
               >
                 Comments
+              </Sidebar.Item>
+            </Link>
+          )}
+          {currentUser && currentUser.isAdmin && (
+            <Link to="/dashboard?tab=suggestions">
+              <Sidebar.Item
+                active={tab === "suggestions" || !tab}
+                icon={SlEnvolopeLetter}
+                className={
+                  tab === "suggestions" || !tab
+                    ? "bg-violet-200 dark:bg-violet-800"
+                    : "bg-white dark:bg-black"
+                }
+                as="div"
+              >
+                Suggestions
               </Sidebar.Item>
             </Link>
           )}
