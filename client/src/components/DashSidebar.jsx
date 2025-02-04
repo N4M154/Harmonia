@@ -9,6 +9,7 @@ import {
   HiChatAlt2,
   HiBookmark,
 } from "react-icons/hi";
+import { FaBolt } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 // import { signoutSuccess } from "../redux/user/userSlice";
@@ -148,8 +149,8 @@ export default function DashSidebar() {
           )}
           <div className="border-t border-gray-300 dark:border-black my-2" />{" "}
           {/* Add border */}
-          <div className="px-4 py-2 text-lg text-center font-semibold text-violet-700">
-            ANALYTICS
+          <div className="px-4 py-2 text-sm text-center font-semibold text-violet-700">
+            <FaBolt className="inline-block mr-2" /> ACTIVITY
           </div>
           <Link to="/dashboard?tab=savedposts">
             <Sidebar.Item
