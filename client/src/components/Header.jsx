@@ -59,162 +59,296 @@ export default function Header() {
     navigate(`/search?${searchQuery}`);
   };
 
+  // return (
+  //   <Navbar className="border-b-2 border-violet-200 dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
+  //     <Link
+  //       to="/home"
+  //       className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white flex items-center"
+  //     >
+  //       <span className="text-violet-700 font-thin dark:text-violet-300 mr-5 ml-5">
+  //         N4M154
+  //       </span>
+  //       <ThemeToggle />
+  //     </Link>
+  //     <form onSubmit={handleSubmit}>
+  //       <TextInput
+  //         type="text"
+  //         placeholder="Search..."
+  //         rightIcon={AiOutlineSearch}
+  //         className="hidden lg:inline"
+  //         value={searchTerm}
+  //         onChange={(e) => setSearchTerm(e.target.value)}
+  //       />
+  //     </form>
+  //     <Button
+  //       className="w-12 h-10 lg:hidden bg-violet-200 text-black hover:!bg-violet-400 dark:bg-violet-400 dark:hover:!bg-violet-500"
+  //       pill
+  //     >
+  //       <AiOutlineSearch />
+  //     </Button>
+  //     <div className="flex gap-2 md:order-2 mr-10">
+  //       {/* <Button
+  //        className="w-12 h-10 hidden sm:inline"
+  //       color="gray"
+  //        pill
+  //        onClick={() => dispatch(toggleTheme())}
+  //      >
+  //        {theme === "light" ? <FaSun /> : <FaMoon />}
+  //      </Button> */}
+  //       {currentUser ? (
+  //         <div className="relative">
+  //           <Dropdown
+  //             arrowIcon={false}
+  //             inline
+  //             label={
+  //               <Avatar alt="user" img={currentUser.profilePicture} rounded />
+  //             }
+  //             className="bg-violet-50 dark:bg-[#18181b]"
+  //           >
+  //             <Dropdown.Header>
+  //               <span className="block text-sm">@{currentUser.username}</span>
+  //               <span className="block text-sm font-medium truncate">
+  //                 {currentUser.email}
+  //               </span>
+  //             </Dropdown.Header>
+  //             <Link to={"/dashboard?tab=profile"}>
+  //               <Dropdown.Item className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40">
+  //                 Profile
+  //               </Dropdown.Item>
+  //             </Link>
+  //             <Dropdown.Divider />
+  //             <Dropdown.Item
+  //               className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
+  //               onClick={handleSignout}
+  //             >
+  //               Sign out
+  //             </Dropdown.Item>
+  //           </Dropdown>
+  //         </div>
+  //       ) : (
+  //         <Link to="/sign-in">
+  //           <div>
+  //             <Button className="bg-violet-400 dark:bg-[#29oc5e] text-black hover:!bg-violet-950/20 dark:hover:!bg-violet-700">
+  //               Sign In
+  //             </Button>
+  //           </div>
+  //         </Link>
+  //       )}
+  //       <Navbar.Toggle />
+  //     </div>
+  //     {/* <Navbar.Collapse className="bg-transparent">
+  //      <Navbar.Link active={path === "/"} as={"div"}>
+  //        <Link to="/">Home</Link>
+  //      </Navbar.Link>
+  //      <Navbar.Link active={path === "/about"} as={"div"}>
+  //        <Link to="/about">About</Link>
+  //      </Navbar.Link>
+  //      <Navbar.Link active={path === "/projects"} as={"div"}>
+  //        <Link to="/projects">Projects</Link>
+  //      </Navbar.Link>
+  //    </Navbar.Collapse> */}
+
+  //     {/* Navbar Links - Handles Collapsed and Full-Width Modes */}
+  //     <Navbar.Collapse className="bg-transparent">
+  //       <Navbar.Link
+  //         active={path === "/home"}
+  //         as={"div"}
+  //         className={`
+  //         px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
+  //         ${
+  //           isCollapsed
+  //             ? "text-black dark:text-white"
+  //             : "!text-black dark:!text-white"
+  //         }
+  //         ${
+  //           path === "/home"
+  //             ? "bg-violet-300 text-white"
+  //             : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
+  //         }
+  //         ${
+  //           !isCollapsed && path === "/home"
+  //             ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-110 transition-all duration-300"
+  //             : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-110 transition-all duration-300"
+  //         }
+  //       `}
+  //       >
+  //         <Link to="/home" className="w-full h-full block bg-transparent">
+  //           <HiHome className="text-2xl" />
+  //         </Link>
+  //       </Navbar.Link>
+
+  //       <Navbar.Link
+  //         active={path === "/about"}
+  //         as={"div"}
+  //         className={`
+  //         px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
+  //         ${
+  //           isCollapsed
+  //             ? "text-black dark:text-white"
+  //             : "!text-black dark:!text-white"
+  //         }
+  //         ${
+  //           path === "/about"
+  //             ? "bg-violet-300 text-white"
+  //             : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
+  //         }
+  //         ${
+  //           !isCollapsed && path === "/about"
+  //             ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-105 transition-all duration-300"
+  //             : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-105 transition-all duration-300"
+  //         }
+  //       `}
+  //       >
+  //         <Link to="/about" className="w-full h-full block bg-transparent">
+  //           About
+  //         </Link>
+  //       </Navbar.Link>
+
+  //       {/* <Navbar.Link
+  //        active={path === "/projects"}
+  //        as={"div"}
+  //        className={
+  //         path === "/projects"
+  //            ? "bg-violet-300 text-black dark:bg-violet-400/50 rounded-md px-3 py-2"
+  //            : "bg-transparent text-gray-700 hover:bg-opacity-50 rounded-md px-3 py-2"
+  //        }
+  //      >
+  //        <Link to="/projects">Projects</Link>
+  //      </Navbar.Link> */}
+  //     </Navbar.Collapse>
+  //   </Navbar>
+  // );
+
   return (
     <Navbar className="border-b-2 border-violet-200 dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
-      <Link
-        to="/home"
-        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
+      {/* Left side - Logo and Theme Toggle */}
+      <div className="flex items-center">
+        <Link
+          to="/home"
+          className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white flex items-center"
+        >
+          <span className="text-violet-700 font-thin dark:text-violet-300 mr-5 ml-5">
+            N4M154
+          </span>
+        </Link>
+        <ThemeToggle />
+      </div>
+
+      {/* Center - Search (hidden on mobile) */}
+      <form
+        onSubmit={handleSubmit}
+        className="flex-grow justify-center hidden lg:flex"
       >
-        <span className="text-violet-700 font-thin dark:text-violet-300">
-          N4M154
-        </span>
-      </Link>
-      <form onSubmit={handleSubmit}>
         <TextInput
           type="text"
           placeholder="Search..."
           rightIcon={AiOutlineSearch}
-          className="hidden lg:inline"
+          className="max-w-md w-full"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-      <Button
-        className="w-12 h-10 lg:hidden bg-violet-200 text-black hover:!bg-violet-400 dark:bg-violet-400 dark:hover:!bg-violet-500"
-        pill
-      >
-        <AiOutlineSearch />
-      </Button>
-      <div className="flex gap-2 md:order-2 mr-10">
-        <ThemeToggle />
-        {/* <Button
-           className="w-12 h-10 hidden sm:inline"
-          color="gray"
-           pill
-           onClick={() => dispatch(toggleTheme())}
-         >
-           {theme === "light" ? <FaSun /> : <FaMoon />}
-         </Button> */}
-        {currentUser ? (
-          <div className="relative">
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar alt="user" img={currentUser.profilePicture} rounded />
-              }
-              className="bg-violet-50 dark:bg-[#18181b]"
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">@{currentUser.username}</span>
-                <span className="block text-sm font-medium truncate">
-                  {currentUser.email}
-                </span>
-              </Dropdown.Header>
-              <Link to={"/dashboard?tab=profile"}>
-                <Dropdown.Item className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40">
-                  Profile
-                </Dropdown.Item>
-              </Link>
-              <Dropdown.Divider />
-              <Dropdown.Item
-                className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
-                onClick={handleSignout}
-              >
-                Sign out
-              </Dropdown.Item>
-            </Dropdown>
-          </div>
-        ) : (
-          <Link to="/sign-in">
-            <div>
-              <Button className="bg-violet-400 dark:bg-[#29oc5e] text-black hover:!bg-violet-950/20 dark:hover:!bg-violet-700">
-                Sign In
-              </Button>
-            </div>
-          </Link>
-        )}
-        <Navbar.Toggle />
-      </div>
-      {/* <Navbar.Collapse className="bg-transparent">
-         <Navbar.Link active={path === "/"} as={"div"}>
-           <Link to="/">Home</Link>
-         </Navbar.Link>
-         <Navbar.Link active={path === "/about"} as={"div"}>
-           <Link to="/about">About</Link>
-         </Navbar.Link>
-         <Navbar.Link active={path === "/projects"} as={"div"}>
-           <Link to="/projects">Projects</Link>
-         </Navbar.Link>
-       </Navbar.Collapse> */}
 
-      {/* Navbar Links - Handles Collapsed and Full-Width Modes */}
-      <Navbar.Collapse className="bg-transparent">
-        <Navbar.Link
-          active={path === "/home"}
-          as={"div"}
-          className={`
-            px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
-            ${
-              isCollapsed
-                ? "text-black dark:text-white"
-                : "!text-black dark:!text-white"
-            }
+      {/* Right side - Navigation and Profile */}
+      <div className="flex items-center gap-4 mr-10">
+        {/* Mobile Search Button */}
+        <Button
+          className="w-12 h-10 lg:hidden bg-violet-200 text-black hover:!bg-violet-400 dark:bg-violet-400 dark:hover:!bg-violet-500"
+          pill
+        >
+          <AiOutlineSearch />
+        </Button>
+
+        {/* Navigation Links */}
+        <Link
+          to="/home"
+          className={`hidden md:flex items-center px-3 py-2 rounded-md transition-all duration-300
             ${
               path === "/home"
-                ? "bg-violet-300 text-white"
-                : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
-            }
-            ${
-              !isCollapsed && path === "/home"
-                ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-110 transition-all duration-300"
-                : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-110 transition-all duration-300"
-            }
-          `}
+                ? "bg-violet-300/20 text-violet-700 scale-110 dark:text-violet-400 font-semibold"
+                : "text-black hover:bg-violet-300/20 hover:text-violet-700 dark:hover:text-violet-400 hover:scale-110 transition-all duration-300 dark:text-gray-300"
+            }`}
         >
-          <Link to="/home" className="w-full h-full block bg-transparent">
-            <HiHome className="text-2xl" />
-          </Link>
-        </Navbar.Link>
+          <HiHome className="text-2xl mr-1" />
+        </Link>
 
-        <Navbar.Link
-          active={path === "/about"}
-          as={"div"}
-          className={`
-            px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
-            ${
-              isCollapsed
-                ? "text-black dark:text-white"
-                : "!text-black dark:!text-white"
-            }
+        <Link
+          to="/about"
+          className={`hidden md:flex items-center px-3 py-2 rounded-md transition-all duration-300
             ${
               path === "/about"
-                ? "bg-violet-300 text-white"
-                : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
-            }
-            ${
-              !isCollapsed && path === "/about"
-                ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-105 transition-all duration-300"
-                : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-105 transition-all duration-300"
-            }
-          `}
+                ? "bg-violet-300/20 text-violet-700 scale-110 dark:text-violet-400 font-semibold"
+                : "text-black hover:bg-violet-300/20 hover:text-violet-700 dark:hover:text-violet-400 hover:scale-110 transition-all duration-300 dark:text-gray-300"
+            }`}
         >
-          <Link to="/about" className="w-full h-full block bg-transparent">
-            About
-          </Link>
-        </Navbar.Link>
+          About
+        </Link>
 
-        {/* <Navbar.Link
-           active={path === "/projects"}
-           as={"div"}
-           className={
-            path === "/projects"
-               ? "bg-violet-300 text-black dark:bg-violet-400/50 rounded-md px-3 py-2"
-               : "bg-transparent text-gray-700 hover:bg-opacity-50 rounded-md px-3 py-2"
-           }
-         >
-           <Link to="/projects">Projects</Link>
-         </Navbar.Link> */}
+        {/* Profile Dropdown */}
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+            }
+            className="bg-violet-50 dark:bg-[#18181b]"
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">@{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate">
+                {currentUser.email}
+              </span>
+            </Dropdown.Header>
+            <Link to="/dashboard?tab=profile">
+              <Dropdown.Item className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40">
+                Profile
+              </Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item
+              className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
+              onClick={handleSignout}
+            >
+              Sign out
+            </Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/sign-in">
+            <Button className="bg-violet-400 dark:bg-[#29oc5e] text-black hover:!bg-violet-950/20 dark:hover:!bg-violet-700">
+              Sign In
+            </Button>
+          </Link>
+        )}
+
+        {/* Mobile Menu Toggle */}
+        <Navbar.Toggle />
+      </div>
+
+      {/* Mobile Menu */}
+      <Navbar.Collapse className="md:hidden bg-transparent">
+        <Link
+          to="/home"
+          className={`block px-3 py-2 rounded-md transition-all duration-300
+            ${
+              path === "/home"
+                ? "bg-violet-600/10 text-violet-700 dark:text-violet-400"
+                : "text-gray-700 hover:bg-violet-300 hover:scale-105 dark:hover:bg-violet-600/20 hover:text-violet-700 dark:text-gray-300"
+            }`}
+        >
+          Home
+        </Link>
+        <Link
+          to="/about"
+          className={`block px-3 py-2 rounded-md transition-all duration-300
+            ${
+              path === "/about"
+                ? "bg-violet-600/10 text-violet-700 dark:text-violet-400"
+                : "text-gray-700 hover:bg-violet-300 hover:scale-105 dark:hover:bg-violet-600/20 hover:text-violet-700 dark:text-gray-300"
+            }`}
+        >
+          About
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   );
