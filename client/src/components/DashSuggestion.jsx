@@ -1,12 +1,91 @@
-import { useState } from "react";
+// import { useState } from "react";
+
+// const DashSuggestion = () => {
+//   const [loading, setLoading] = useState(false);
+
+//   const [suggestions, setSuggestions] = useState([]);
+//   const [error, setError] = useState(null);
+
+//   const handleFetchSuggestions = async () => {
+//     setLoading(true);
+//     setError(null);
+
+//     try {
+//       const res = await fetch("/api/sug/suggestions", {
+//         method: "GET",
+//         headers: {
+//           Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming token is stored in localStorage
+//         },
+//       });
+
+//       if (res.ok) {
+//         const data = await res.json();
+//         setSuggestions(data); // Set the fetched suggestions in state
+//       } else {
+//         setError("Failed to fetch suggestions.");
+//       }
+//     } catch (err) {
+//       setError("Something went wrong, please try again later.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="max-w-xl mx-auto p-4">
+//       <h2 className="text-3xl font-thin mb-4 mt-4 text-violet-700 text-center">
+//         All the sent suggestions from the users
+//       </h2>
+
+//       {/* Button to Fetch All Suggestions */}
+//       <button
+//         onClick={handleFetchSuggestions}
+//         className="w-full py-2 px-4 bg-blue-600 text-white rounded-md"
+//       >
+//         {loading ? "Loading..." : "Show All Suggestions"}
+//       </button>
+
+//       {/* Display Suggestions */}
+//       {error && <p className="mt-4 text-center text-red-600">{error}</p>}
+
+//       {suggestions.length > 0 ? (
+//         <div className="mt-6">
+//           <ul className="space-y-4">
+//             {suggestions.map((suggestion) => (
+//               <li key={suggestion._id} className="p-4 border rounded-md">
+//                 <h3 className="font-semibold">{suggestion.subject}</h3>
+//                 <p>{suggestion.content}</p>
+//                 <p className="text-sm text-gray-500">
+//                   Suggested by {suggestion.user.username} on{" "}
+//                   {new Date(suggestion.date).toLocaleDateString()}
+//                 </p>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       ) : (
+//         <p className="mt-4 text-center">No suggestions available.</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default DashSuggestion;
+
+import { useState, useEffect } from "react";
+import { Table, X } from "lucide-react";
 
 const DashSuggestion = () => {
   const [loading, setLoading] = useState(false);
-
   const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState(null);
+  const [selectedContent, setSelectedContent] = useState(null);
 
-  const handleFetchSuggestions = async () => {
+  useEffect(() => {
+    fetchSuggestions();
+  }, []);
+
+  const fetchSuggestions = async () => {
     setLoading(true);
     setError(null);
 
@@ -14,13 +93,13 @@ const DashSuggestion = () => {
       const res = await fetch("/api/sug/suggestions", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming token is stored in localStorage
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
 
       if (res.ok) {
         const data = await res.json();
-        setSuggestions(data); // Set the fetched suggestions in state
+        setSuggestions(data);
       } else {
         setError("Failed to fetch suggestions.");
       }
@@ -31,40 +110,169 @@ const DashSuggestion = () => {
     }
   };
 
+  const openModal = (content) => {
+    setSelectedContent(content);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeModal = () => {
+    setSelectedContent(null);
+    document.body.style.overflow = "unset";
+  };
+
+  // Function to add line breaks after every n characters (80 characters in this case)
+  const formatContentWithLineBreaks = (content, charsPerLine = 80) => {
+    let formattedContent = "";
+    let currentLine = "";
+
+    for (let i = 0; i < content.length; i++) {
+      currentLine += content[i];
+      // Add line break after every 80 characters
+      if (currentLine.length === charsPerLine) {
+        formattedContent += currentLine + "\n";
+        currentLine = "";
+      }
+    }
+
+    // Append any remaining characters if present
+    if (currentLine.length > 0) {
+      formattedContent += currentLine;
+    }
+
+    return formattedContent;
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-violet-700"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center p-4">
+        <p className="text-red-600">{error}</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        View All Suggestions
-      </h2>
+    <div className="max-w-7xl mx-auto p-4">
+      <div className="flex items-center gap-2 mb-6">
+        <Table className="h-8 w-8 text-violet-700" />
+        <h2 className="text-3xl font-thin text-violet-700">
+          User Suggestions Overview
+        </h2>
+      </div>
 
-      {/* Button to Fetch All Suggestions */}
-      <button
-        onClick={handleFetchSuggestions}
-        className="w-full py-2 px-4 bg-blue-600 text-white rounded-md"
-      >
-        {loading ? "Loading..." : "Show All Suggestions"}
-      </button>
+      <div className="overflow-x-auto bg-white rounded-lg shadow">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6"
+              >
+                Subject
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-3/6"
+              >
+                Content
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6"
+              >
+                Suggested By
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6"
+              >
+                Date
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {suggestions.length > 0 ? (
+              suggestions.map((suggestion) => (
+                <tr key={suggestion._id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">
+                      {suggestion.subject}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="text-sm text-gray-900">
+                      {suggestion.content.length > 40 ? (
+                        <div>
+                          <p>{suggestion.content.slice(0, 40)}...</p>
+                          <button
+                            onClick={() => openModal(suggestion.content)}
+                            className="mt-2 text-violet-600 hover:text-violet-800 text-sm font-medium"
+                          >
+                            Show more
+                          </button>
+                        </div>
+                      ) : (
+                        suggestion.content
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">
+                      {suggestion.user.username}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-500">
+                      {new Date(suggestion.date).toLocaleDateString()}
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={4}
+                  className="px-6 py-4 text-center text-sm text-gray-500"
+                >
+                  No suggestions available.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
 
-      {/* Display Suggestions */}
-      {error && <p className="mt-4 text-center text-red-600">{error}</p>}
-
-      {suggestions.length > 0 ? (
-        <div className="mt-6">
-          <ul className="space-y-4">
-            {suggestions.map((suggestion) => (
-              <li key={suggestion._id} className="p-4 border rounded-md">
-                <h3 className="font-semibold">{suggestion.subject}</h3>
-                <p>{suggestion.content}</p>
-                <p className="text-sm text-gray-500">
-                  Suggested by {suggestion.user.username} on{" "}
-                  {new Date(suggestion.date).toLocaleDateString()}
+      {/* Modal */}
+      {selectedContent && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Full Content
+                </h3>
+                <button
+                  onClick={closeModal}
+                  className="text-gray-400 hover:text-gray-500 transition-colors"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              <div className="prose max-w-none">
+                <p className="text-gray-600 whitespace-pre-wrap">
+                  {formatContentWithLineBreaks(selectedContent)}
                 </p>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      ) : (
-        <p className="mt-4 text-center">No suggestions available.</p>
       )}
     </div>
   );
