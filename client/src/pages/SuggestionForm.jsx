@@ -304,37 +304,37 @@ const SuggestionForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-white to-violet-100 dark:from-[#18181b] dark:to-black py-12">
       <div className="max-w-xl mx-auto p-6 relative">
         {/* Animated Light Bulb */}
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 transition-all duration-300">
           <Lightbulb
-            className={`w-12 h-12 transition-colors duration-500 ${
+            className={`w-[70px] h-[70px] transition-colors duration-500 ${
               isLightOn
-                ? "text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
-                : "text-gray-400"
+                ? "text-yellow-200 drop-shadow-[0_0_14px_rgba(255,234,0,1)]"
+                : "text-violet-400"
             }`}
           />
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 mt-8">
-          <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
+        <div className="bg-transparent dark:bg-[#18181b] rounded-xl shadow-xl shadow-black/60 dark:shadow-gray-500/50 p-8 mt-10">
+          <h2 className="text-3xl font-thin mb-6 text-center text-black dark:text-violet-400 bg-clip-text ">
             Share Your Brilliant Idea
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label
-                className="block text-lg font-medium text-gray-700"
+                className="block text-lg font-thin text-violet-800 dark:text-violet-400"
                 htmlFor="subject"
               >
-                Type of Suggestion
+                Regarding
               </label>
               <select
                 id="subject"
                 value={subject}
                 onChange={handleSubjectChange}
-                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
+                className="w-full p-3 border border-gray-300 bg-violet-200 dark:bg-violet-300 rounded-lg shadow-md shadow-black/40 dark:shadow-violet-700/80 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 transition-shadow"
               >
                 <option value="feature">✨ New Feature</option>
                 <option value="blog topic">📝 Blog Topic</option>
@@ -343,7 +343,7 @@ const SuggestionForm = () => {
 
             <div className="space-y-2">
               <label
-                className="block text-lg font-medium text-gray-700"
+                className="block text-lg font-thin text-violet-800 dark:text-violet-400"
                 htmlFor="content"
               >
                 Your Suggestion
@@ -353,10 +353,10 @@ const SuggestionForm = () => {
                 value={content}
                 onChange={handleContentChange}
                 rows="6"
-                className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow"
+                className="w-full p-3 border bg-violet-100 dark:bg-violet-200 border-violet-300 rounded-lg shadow-md shadow-black/40 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 transition-shadow text-black"
                 placeholder="Describe your amazing idea here..."
               />
-              <div className="flex justify-between text-sm text-gray-500">
+              <div className="flex justify-between text-sm text-violet-500 dark:text-gray-300/60">
                 <span>Be creative and detailed!</span>
                 <span>
                   {maxCharacters - content.length} characters remaining
@@ -370,7 +370,7 @@ const SuggestionForm = () => {
               className={`w-full py-3 px-6 rounded-lg text-white font-medium text-lg transition-all duration-300 ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 transform hover:-translate-y-0.5 hover:shadow-lg"
+                  : "bg-gradient-to-r from-violet-400 to-violet-600 hover:from-violet-600 hover:to-violet-600 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/50"
               }`}
             >
               {loading ? (

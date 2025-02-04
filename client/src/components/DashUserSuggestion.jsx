@@ -71,7 +71,7 @@
 // export default DashUserSuggestion;
 
 import { useState, useEffect } from "react";
-import { Table, X } from "lucide-react";
+import { X } from "lucide-react";
 
 const DashUserSuggestion = () => {
   const [loading, setLoading] = useState(false);
@@ -142,7 +142,7 @@ const DashUserSuggestion = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
+      <div className="flex items-center justify-center absolute top-0 left-0 right-0 h-[100vh]">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-violet-700"></div>
       </div>
     );
@@ -158,52 +158,56 @@ const DashUserSuggestion = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-4">
-      <div className="flex items-center gap-2 mb-6">
-        <Table className="h-8 w-8 text-violet-700" />
-        <h2 className="text-3xl font-thin text-violet-700">Your Suggestions</h2>
-      </div>
+      {/* <div className="flex items-center justify-center gap-2 mb-6">
+        <h2 className="text-3xl text-center font-thin text-violet-700">
+          Your Suggestions
+        </h2>
+      </div> */}
 
-      <div className="overflow-x-auto bg-white rounded-lg shadow">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+      <div className="overflow-x-auto bg-transparent rounded-lg shadow-lg dark:shadow-gray-500/40 dark:border dark:border-gray-600">
+        <table className="min-w-full divide-y divide-violet-200 dark:divide-gray-600">
+          <thead className="bg-violet-100 dark:bg-black">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6"
+                className="px-6 py-3 text-left text-xs font-medium text-violet-700 dark:text-violet-200 uppercase tracking-wider w-1/6"
               >
                 Subject
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-3/6"
+                className="px-6 py-3 text-left text-xs font-medium text-violet-700 dark:text-violet-200 uppercase tracking-wider w-1/6"
               >
                 Content
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-1/6"
+                className="px-6 py-3 text-left text-xs font-medium text-violet-700 dark:text-violet-200 uppercase tracking-wider w-1/6"
               >
                 Date
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-transparent divide-y divide-violet-200 dark:divide-gray-600">
             {userSuggestions.length > 0 ? (
               userSuggestions.map((suggestion) => (
-                <tr key={suggestion._id} className="hover:bg-gray-50">
+                <tr
+                  key={suggestion._id}
+                  className="hover:bg-violet-100/20 dark:hover:bg-black/50"
+                >
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-thin text-black dark:text-white">
                       {suggestion.subject}
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-black dark:text-white">
                       {suggestion.content.length > 40 ? (
                         <div>
                           <p>{suggestion.content.slice(0, 40)}...</p>
                           <button
                             onClick={() => openModal(suggestion.content)}
-                            className="mt-2 text-violet-600 hover:text-violet-800 text-sm font-medium"
+                            className="mt-2 text-violet-600 dark:text-violet-400 hover:text-violet-800 dark:hover:text-violet-600 hover:underline text-sm font-thin"
                           >
                             Show more
                           </button>
@@ -214,7 +218,7 @@ const DashUserSuggestion = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm font-thin text-gray-400">
                       {new Date(suggestion.date).toLocaleDateString()}
                     </div>
                   </td>
@@ -224,7 +228,7 @@ const DashUserSuggestion = () => {
               <tr>
                 <td
                   colSpan={3}
-                  className="px-6 py-4 text-center text-sm text-gray-500"
+                  className="px-6 py-4 text-center text-sm text-black dark:text-white"
                 >
                   You haven&apos;t submitted any suggestions yet.
                 </td>
@@ -236,12 +240,12 @@ const DashUserSuggestion = () => {
 
       {/* Modal */}
       {selectedContent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-violet-50 dark:bg-black bg-opacity-50 dark:bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:bg-[#18181b] border border-violet-300 dark:border-violet-700/40 rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  Full Content
+                <h3 className="text-lg font-thin text-violet-700 dark:text-violet-400">
+                  Content
                 </h3>
                 <button
                   onClick={closeModal}
@@ -251,7 +255,7 @@ const DashUserSuggestion = () => {
                 </button>
               </div>
               <div className="prose max-w-none">
-                <p className="text-gray-600 whitespace-pre-wrap">
+                <p className="text-black dark:text-[#f5f5f5] font-thin whitespace-pre-wrap">
                   {formatContentWithLineBreaks(selectedContent)}
                 </p>
               </div>
