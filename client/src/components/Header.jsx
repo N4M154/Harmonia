@@ -15,7 +15,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
+  //const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -26,13 +26,13 @@ export default function Header() {
   }, [location.search]);
 
   // Detect window resize to update isCollapsed state
-  useEffect(() => {
-    const handleResize = () => {
-      setIsCollapsed(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsCollapsed(window.innerWidth < 768);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   const handleSignout = async () => {
     try {
