@@ -61,8 +61,9 @@ export default function SignUp() {
           {/* top */}
           <div className="w-full text-center mb-7 mt-2">
             <Link to="/" className="font-bold dark:text-white text-4xl">
-              <span className="px-2 py-1 rounded-lg text-black dark:text-gray-300">
-                Welcome to <span className="text-violet-500">Harmonia</span>
+              <span className="px-2 py-1 rounded-lg font-thin text-black dark:text-gray-300">
+                Welcome to{" "}
+                <span className="font-bold text-violet-500">Harmonia</span>
               </span>
             </Link>
           </div>
