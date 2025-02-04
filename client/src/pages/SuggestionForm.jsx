@@ -336,8 +336,8 @@ const SuggestionForm = () => {
                 onChange={handleSubjectChange}
                 className="w-full p-3 border border-gray-300 bg-violet-200 dark:bg-violet-300 rounded-lg shadow-md shadow-black/40 dark:shadow-violet-700/80 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 transition-shadow"
               >
-                <option value="feature">✨ New Feature</option>
-                <option value="blog topic">📝 Blog Topic</option>
+                <option value="feature">✨ Feature</option>
+                <option value="blog topic">📝 Blog</option>
               </select>
             </div>
 
