@@ -9,6 +9,7 @@ import DashboardComp from "../components/DashboardComp";
 import DashSavedPosts from "../components/DashSavedPosts";
 import DashPostedComments from "../components/DashPostedComments";
 import DashSuggestion from "../components/DashSuggestion";
+import DashUserSuggestion from "../components/DashUserSuggestion";
 
 export default function Dashboard() {
   const location = useLocation();
@@ -42,6 +43,8 @@ export default function Dashboard() {
       {tab === "postedcomments" && <DashPostedComments />}
       {/* suggestions */}
       {tab === "suggestions" && <DashSuggestion />}
+      {/* suggestions per user*/}
+      {tab === "usersuggestions" && <DashUserSuggestion />}
     </div>
   );
 }

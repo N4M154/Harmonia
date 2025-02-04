@@ -197,6 +197,22 @@ export default function DashSidebar() {
               Posted Comments
             </Sidebar.Item>
           </Link>
+          {currentUser && !currentUser.isAdmin && (
+            <Link to="/dashboard?tab=usersuggestions">
+              <Sidebar.Item
+                active={tab === "usersuggestions" || !tab}
+                icon={SlEnvolopeLetter}
+                className={
+                  tab === "usersuggestions" || !tab
+                    ? "bg-violet-200 dark:bg-violet-800"
+                    : "bg-white dark:bg-black"
+                }
+                as="div"
+              >
+                Your Suggestions
+              </Sidebar.Item>
+            </Link>
+          )}
           {/* <Sidebar.Item
             icon={HiArrowSmRight}
             className="cursor-pointer mt-[150px] bg-violet-50 dark:!bg-transparent hover:bg-violet-100 border border-violet-200 dark:border-gray-600 transition-all duration-300 hover:scale-105"
