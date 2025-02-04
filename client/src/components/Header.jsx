@@ -1,6 +1,7 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+import { HiHome } from "react-icons/hi2";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
@@ -153,17 +154,26 @@ export default function Header() {
           active={path === "/home"}
           as={"div"}
           className={`
-            px-3 py-2 rounded-md transition-colors duration-300
-            ${isCollapsed ? "text-black dark:text-white" : ""}
+            px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
+            ${
+              isCollapsed
+                ? "text-black dark:text-white"
+                : "!text-black dark:!text-white"
+            }
             ${
               path === "/home"
-                ? "bg-violet-300 text-white dark:bg-violet-400"
-                : "text-gray-700 hover:bg-violet-300/20 dark:text-gray-300 dark:hover:bg-violet-100/20"
+                ? "bg-violet-300 text-white"
+                : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
+            }
+            ${
+              !isCollapsed && path === "/home"
+                ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-110 transition-all duration-300"
+                : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-110 transition-all duration-300"
             }
           `}
         >
           <Link to="/home" className="w-full h-full block bg-transparent">
-            Home
+            <HiHome className="text-2xl" />
           </Link>
         </Navbar.Link>
 
@@ -171,16 +181,25 @@ export default function Header() {
           active={path === "/about"}
           as={"div"}
           className={`
-            px-3 py-2 rounded-md transition-colors duration-300 
-            ${isCollapsed ? "text-black dark:text-white" : ""}
+            px-3 py-2 rounded-md transition-colors duration-300 font-thin text-[17px]
+            ${
+              isCollapsed
+                ? "text-black dark:text-white"
+                : "!text-black dark:!text-white"
+            }
             ${
               path === "/about"
-                ? "bg-violet-300 text-white dark:bg-violet-400"
-                : "text-gray-700 hover:bg-violet-300/20 dark:text-gray-300 dark:hover:bg-violet-100/20"
+                ? "bg-violet-300 text-white"
+                : "text-gray-700 hover:bg-violet-300/20 dark:!text-gray-300 dark:hover:bg-violet-100/20"
+            }
+            ${
+              !isCollapsed && path === "/about"
+                ? "!text-violet-700 dark:!text-violet-500 !font-semibold !scale-105 transition-all duration-300"
+                : "!text-black dark:hover:!text-violet-700 hover:!text-violet-950 hover:!font-semibold hover:!scale-105 transition-all duration-300"
             }
           `}
         >
-          <Link to="/about" className="w-full h-full block">
+          <Link to="/about" className="w-full h-full block bg-transparent">
             About
           </Link>
         </Navbar.Link>
