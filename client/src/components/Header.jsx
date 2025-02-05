@@ -2,6 +2,7 @@ import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiHome } from "react-icons/hi2";
+import { Lightbulb, LogOut } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
@@ -292,7 +293,7 @@ export default function Header() {
             label={
               <Avatar alt="user" img={currentUser.profilePicture} rounded />
             }
-            className="bg-violet-50 dark:bg-[#18181b]"
+            className="bg-violet-50 dark:!bg-[#18181b]"
           >
             <Dropdown.Header>
               <span className="block text-sm">@{currentUser.username}</span>
@@ -306,11 +307,18 @@ export default function Header() {
               </Dropdown.Item>
             </Link>
             <Dropdown.Divider />
+            <Link to="/suggest">
+              <Dropdown.Item className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40 flex items-center gap-2">
+                Have a suggestion?
+                <Lightbulb className="w-6 h-6 text-yellow-300 drop-shadow-[0_0_4px_rgba(255,234,0,1)]" />
+              </Dropdown.Item>
+            </Link>{" "}
+            <Dropdown.Divider />
             <Dropdown.Item
-              className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
+              className="flex justify-center items-center hover:scale-110 transition-all duration-300 hover:rounded-full hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
               onClick={handleSignout}
             >
-              Sign out
+              <LogOut className="w-6 h-6 hover:scale-110 transition-all duration-300" />
             </Dropdown.Item>
           </Dropdown>
         ) : (
