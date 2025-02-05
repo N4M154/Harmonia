@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const commentSchema = new mongoose.Schema(
+const replySchema = new mongoose.Schema(
   {
     content: {
       type: String,
@@ -14,18 +14,15 @@ const commentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    likes: {
-      type: Array,
-      default: [],
-    },
-    numberOfLikes: {
-      type: Number,
-      default: 0,
+    commentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-const Comment = mongoose.model("Comment", commentSchema);
+const Reply = mongoose.model("Reply", replySchema);
 
-export default Comment;
+export default Reply;
