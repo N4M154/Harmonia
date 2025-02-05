@@ -2,7 +2,7 @@ import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiHome } from "react-icons/hi2";
-import { Lightbulb, LogOut } from "lucide-react";
+import { Lightbulb, LogOut, Plus } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
@@ -233,6 +233,28 @@ export default function Header() {
           </span>
         </Link>
         <ThemeToggle />
+        {currentUser.isAdmin && (
+          <Link to="/create-post">
+            <div className="relative group">
+              <Button
+                type="button"
+                className="group relative ml-5 mr-5 w-12 h-12 rounded-full !bg-violet-400 border-2 dark:!border-violet-800 !border-violet-600/50 !text-violet-800 !shadow-lg hover:!shadow-xl hover:!shadow-black/60 !shadow-black/40 dark:!shadow-gray-600 dark:hover:!shadow-gray-600 hover:!scale-110 transition-all duration-300 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-gradient-to-tr from-violet-300/0 to-violet-300/30 dark:from-white/0 dark:to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Plus className="w-6 h-6 transform group-hover:rotate-90 group-hover:scale-110 transition-all duration-300" />
+                <span className="absolute -inset-full group-hover:inset-0 bg-gradient-to-r from-violet-400/0 via-white/10 to-violet-400/0 group-hover:-translate-x-full transition-all duration-1000 ease-out" />
+              </Button>
+              {/* Tooltip positioned on the right */}
+              <div className="absolute left-full top-1/2 transform -translate-y-1/2 -ml-3 hidden group-hover:block">
+                <div className="relative bg-violet-200 text-violet-800 font-thin dark:bg-violet-900 dark:text-violet-100 px-3 py-1.5 text-sm rounded-xl border border-violet-300 dark:border-violet-700 shadow-lg">
+                  {/* Arrow pointing to the left */}
+                  <div className="absolute left-[-4px] top-1/2 transform -translate-y-1/2 w-2 h-2 bg-violet-200 dark:bg-violet-900 border-t border-l border-violet-400 dark:border-violet-700 rotate-45"></div>
+                  new post
+                </div>
+              </div>
+            </div>
+          </Link>
+        )}
       </div>
 
       {/* Center - Search (hidden on mobile) */}
