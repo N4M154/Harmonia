@@ -172,7 +172,7 @@
 //   );
 // }
 
-//individually posted comments
+//--------------------------------------------------------------------------------------------------------------individually posted comments
 
 import { Modal, Table, Button } from "flowbite-react";
 import { useEffect, useState } from "react";
