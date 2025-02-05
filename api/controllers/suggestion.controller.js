@@ -88,3 +88,21 @@ export const getUserSuggestions = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteSuggestion = async (req, res, next) => {
+  console.log("User ID:", req.user.id); // Log the user ID
+  const suggestion = await Suggestion.findById(req.params.suggestionId);
+  if (!suggestion) {
+    return next(errorHandler(404, "Suggestion not found"));
+  }
+
+  console.log("Suggestion Owner ID:", suggestion.user); // Log the suggestion's user ID
+  if (suggestion.user.toString() !== req.user.id && !req.user.isAdmin) {
+    return next(
+      errorHandler(403, "You are not allowed to delete this suggestion")
+    );
+  }
+
+  await Suggestion.findByIdAndDelete(req.params.suggestionId);
+  res.status(200).json("Suggestion has been deleted");
+};

@@ -209,14 +209,17 @@
 // export default DashSuggestion;
 // -----------------------------------------------------------------------------------------------------both work fine
 import { useState, useEffect } from "react";
-import { Table } from "flowbite-react";
+import { Table, Modal, Button } from "flowbite-react";
 import { X } from "lucide-react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 const DashSuggestion = () => {
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState(null);
   const [selectedContent, setSelectedContent] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [suggestionIdToDelete, setSuggestionIdToDelete] = useState("");
 
   useEffect(() => {
     fetchSuggestions();
@@ -245,7 +248,31 @@ const DashSuggestion = () => {
       setLoading(false);
     }
   };
-
+  const handleDeleteSuggestion = async () => {
+    setShowModal(false);
+    try {
+      const res = await fetch(
+        `/api/sug/deletesuggestions/${suggestionIdToDelete}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setSuggestions((prev) =>
+          prev.filter((suggestion) => suggestion._id !== suggestionIdToDelete)
+        );
+        setShowModal(false);
+      } else {
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const openModal = (content) => {
     setSelectedContent(content);
     document.body.style.overflow = "hidden";
@@ -308,6 +335,9 @@ const DashSuggestion = () => {
             <Table.HeadCell className="bg-violet-50 dark:bg-black dark:text-white">
               Date
             </Table.HeadCell>
+            <Table.HeadCell className="bg-violet-50 dark:bg-black dark:text-white">
+              Delete
+            </Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y">
             {suggestions.map((suggestion) => (
@@ -339,6 +369,17 @@ const DashSuggestion = () => {
                 <Table.Cell className="dark:text-gray-200">
                   {new Date(suggestion.date).toLocaleDateString()}
                 </Table.Cell>
+                <Table.Cell className="dark:text-gray-200">
+                  <span
+                    onClick={() => {
+                      setShowModal(true);
+                      setSuggestionIdToDelete(suggestion._id);
+                    }}
+                    className="font-medium text-red-500 hover:underline cursor-pointer"
+                  >
+                    Delete
+                  </span>
+                </Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
@@ -346,7 +387,30 @@ const DashSuggestion = () => {
       ) : (
         <p className="text-gray-400">No suggestions available.</p>
       )}
-
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        popup
+        size="md"
+      >
+        <Modal.Header />
+        <Modal.Body className="dark:bg-[#18181b] bg-violet-100">
+          <div className="text-center">
+            <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
+            <h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
+              Are you sure you want to delete this comment?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <Button color="failure" onClick={handleDeleteSuggestion}>
+                Yes, I&apos;m sure
+              </Button>
+              <Button color="gray" onClick={() => setShowModal(false)}>
+                No, cancel
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
       {/* Modal for showing full content */}
       {selectedContent && (
         <div className="fixed inset-0 bg-violet-50 dark:bg-black bg-opacity-50 dark:bg-opacity-50 flex items-center justify-center p-4 z-50">
