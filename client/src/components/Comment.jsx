@@ -264,6 +264,10 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
     setReplyContent("");
   };
 
+  const handleReplyCancel = (replyId) => {
+    setIsEditingReply({ ...isEditingReply, [replyId]: false });
+  };
+
   // const handleReplyEdit = async (replyId, newContent) => {
   //   try {
   //     const res = await fetch(`/api/comment/editReply/${replyId}`, {
@@ -375,7 +379,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <button
                 type="button"
                 onClick={() => onLike(comment._id)}
-                className={`text-gray-400 hover:text-blue-500 ${
+                className={`text-gray-400 hover:text-blue-500 hover:scale-110 transition-all durattion-300 ${
                   currentUser &&
                   comment.likes.includes(currentUser._id) &&
                   "!text-blue-500"
@@ -395,14 +399,14 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                     <button
                       type="button"
                       onClick={handleEdit}
-                      className="text-gray-400 hover:text-blue-500"
+                      className="text-gray-400 hover:text-green-400 hover:scale-110 transition-all duration-300"
                     >
                       Edit
                     </button>
                     <button
                       type="button"
                       onClick={() => onDelete(comment._id)}
-                      className="text-gray-400 hover:text-red-500"
+                      className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300"
                     >
                       Delete
                     </button>
@@ -411,9 +415,9 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <button
                 type="button"
                 onClick={() => setIsReplying(!isReplying)}
-                className="text-gray-400 hover:text-blue-500"
+                className="text-gray-400 hover:text-violet-500 hover:scale-110 transition-all duration-300"
               >
-                <FaReply className="text-sm" /> Reply
+                <FaReply className="text-sm" />
               </button>
             </div>
 
@@ -426,14 +430,17 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                   rows="2"
                 />
                 <div className="flex justify-end gap-2 mt-2">
-                  <Button type="submit" size="sm" className="mt-2">
-                    Submit Reply
+                  <Button
+                    type="submit"
+                    size="sm"
+                    className="mt-2 !bg-violet-500 hover:!bg-violet-600"
+                  >
+                    Submit
                   </Button>
                   <Button
                     type="button"
                     size="sm"
-                    gradientDuoTone="purpleToBlue"
-                    outline
+                    className="!bg-red-400 hover:!bg-red-500 mt-2 !text-black"
                     onClick={handleCancelReply}
                   >
                     Cancel
@@ -444,107 +451,6 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
 
             {replies.length > 0 && (
               <div className="ml-6 mt-3">
-                {/* {replies.map((reply) => (
-                  <div
-                    key={reply._id}
-                    className="flex p-2 border-b dark:border-gray-600"
-                  >
-                    <div className="flex-shrink-0 mr-3">
-                      <img
-                        className="w-8 h-8 rounded-full bg-gray-200"
-                        src={
-                          replyUsers[reply._id]?.profilePicture ||
-                          "/default-avatar.png"
-                        }
-                        alt={replyUsers[reply._id]?.username || "anonymous"}
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center mb-1">
-                        <span className="font-bold mr-1 text-xs truncate">
-                          {replyUsers[reply._id]
-                            ? `@${replyUsers[reply._id]?.username}`
-                            : "anonymous user"}
-                        </span>
-                        <span className="text-gray-500 text-xs">
-                          {moment(reply.createdAt).fromNow()}
-                        </span>
-                      </div>
-                      {isEditingReply[reply._id] ? (
-                        <>
-                          <Textarea
-                            value={
-                              editedReplyContent[reply._id] || reply.content
-                            }
-                            onChange={(e) =>
-                              setEditedReplyContent({
-                                ...editedReplyContent,
-                                [reply._id]: e.target.value,
-                              })
-                            }
-                          />
-                          <div className="flex justify-end gap-2 text-xs">
-                            <Button
-                              type="button"
-                              size="sm"
-                              gradientDuoTone="purpleToBlue"
-                              onClick={() =>
-                                handleReplyEdit(
-                                  reply._id,
-                                  editedReplyContent[reply._id]
-                                )
-                              }
-                            >
-                              Save
-                            </Button>
-                            <Button
-                              type="button"
-                              size="sm"
-                              gradientDuoTone="purpleToBlue"
-                              outline
-                              onClick={() =>
-                                setIsEditingReply({
-                                  ...isEditingReply,
-                                  [reply._id]: false,
-                                })
-                              }
-                            >
-                              Cancel
-                            </Button>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-gray-500 pb-2">{reply.content}</p>
-                          <div className="flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2">
-                            {currentUser &&
-                              (currentUser._id === reply.userId ||
-                                currentUser.isAdmin) && (
-                                <>
-                                  <button
-                                    type="button"
-                                    onClick={() =>
-                                      handleReplyEdit(reply._id, reply.content)
-                                    }
-                                    className="text-gray-400 hover:text-blue-500"
-                                  >
-                                    Edit
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => handleReplyDelete(reply._id)}
-                                    className="text-gray-400 hover:text-red-500"
-                                  >
-                                    Delete
-                                  </button>
-                                </>
-                              )}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                ))} */}
                 {replies.map((reply) => (
                   <div
                     key={reply._id}
@@ -588,7 +494,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                             <Button
                               type="button"
                               size="sm"
-                              gradientDuoTone="purpleToBlue"
+                              className="mt-2 !bg-violet-500 hover:!bg-violet-600"
                               onClick={() => handleReplySave(reply._id)}
                             >
                               Save
@@ -596,8 +502,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                             <Button
                               type="button"
                               size="sm"
-                              gradientDuoTone="purpleToBlue"
-                              outline
+                              className="mt-2 !text-black !bg-red-400 hover:!bg-red-500"
                               onClick={() => handleReplyCancel(reply._id)}
                             >
                               Cancel
@@ -615,14 +520,14 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                                   <button
                                     type="button"
                                     onClick={() => handleReplyEdit(reply._id)}
-                                    className="text-gray-400 hover:text-blue-500"
+                                    className="text-gray-400 hover:text-blue-500 hover:scale-110 transition-all duration-300"
                                   >
                                     Edit
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => handleReplyDelete(reply._id)}
-                                    className="text-gray-400 hover:text-red-500"
+                                    className="text-gray-400 hover:text-red-500 hover:scale-110 transition-all duration-300"
                                   >
                                     Delete
                                   </button>

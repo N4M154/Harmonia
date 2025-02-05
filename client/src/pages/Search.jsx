@@ -105,7 +105,7 @@ export default function Search() {
       <div className="p-7 border-b md:border-r md:min-h-screen border-gray-300 dark:border-gray-700">
         <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
           <div className="flex items-center gap-2">
-            <label className="whitespace-nowrap font-mono dark:text-violet-200">
+            <label className="whitespace-nowrap font-thin dark:text-violet-200">
               Search Term:
             </label>
             <TextInput
@@ -117,14 +117,14 @@ export default function Search() {
             />
           </div>
           <div className="flex items-center gap-2">
-            <label className="font-mono dark:text-violet-200">Sort:</label>
+            <label className="font-thin dark:text-violet-200">Sort:</label>
             <Select onChange={handleChange} value={sidebarData.sort} id="sort">
               <option value="desc">Latest</option>
               <option value="asc">Oldest</option>
             </Select>
           </div>
           <div className="flex items-center gap-2">
-            <label className="font-mono dark:text-violet-200">Category:</label>
+            <label className="font-thin dark:text-violet-200">Category:</label>
             <Select
               onChange={handleChange}
               value={sidebarData.category}
@@ -138,14 +138,14 @@ export default function Search() {
           </div>
           <Button
             type="submit"
-            className="bg-violet-400 hover:!bg-violet-500 text-black dark:bg-violet-400 dark:hover:!bg-violet-500 font-mono"
+            className="bg-violet-400 hover:!bg-violet-500 text-black dark:bg-violet-400 dark:hover:!bg-violet-500 font-thin"
           >
             Apply Filters
           </Button>
         </form>
       </div>
       <div className="w-full">
-        <h1 className="text-3xl font-mono sm:border-b border-gray-300 dark:border-gray-700 p-3 dark:text-white mt-5 ml-5">
+        <h1 className="text-3xl font-thin sm:border-b border-gray-300 dark:border-gray-700 p-3 dark:text-white mt-5 ml-5">
           Posts results:
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
