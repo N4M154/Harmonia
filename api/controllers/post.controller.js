@@ -1,5 +1,8 @@
 import Post from "../models/post.model.js";
 import SavedPost from "../models/savedPost.model.js";
+import Comment from "../models/comment.model.js";
+import Reply from "../models/reply.model.js";
+
 import { errorHandler } from "../utils/error.js";
 
 export const create = async (req, res, next) => {
@@ -72,13 +75,45 @@ export const getposts = async (req, res, next) => {
   }
 };
 
+// export const deletepost = async (req, res, next) => {
+//   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+//     return next(errorHandler(403, "You are not allowed to delete this post"));
+//   }
+//   try {
+//     await Post.findByIdAndDelete(req.params.postId);
+//     res.status(200).json("The post has been deleted");
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 export const deletepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
+  // Check if the user is allowed to delete the post
+  if (!req.user.isAdmin && req.user.id !== req.params.userId) {
     return next(errorHandler(403, "You are not allowed to delete this post"));
   }
+
   try {
-    await Post.findByIdAndDelete(req.params.postId);
-    res.status(200).json("The post has been deleted");
+    // Delete the post
+    const deletedPost = await Post.findByIdAndDelete(req.params.postId);
+
+    if (!deletedPost) {
+      return next(errorHandler(404, "Post not found"));
+    }
+
+    // Delete all comments associated with the post
+    await Comment.deleteMany({ postId: req.params.postId });
+
+    // Delete all replies associated with the post
+    await Reply.deleteMany({ postId: req.params.postId });
+
+    // Delete all saved posts referencing the deleted post
+    await SavedPost.deleteMany({ post: req.params.postId });
+
+    res
+      .status(200)
+      .json(
+        "The post and its associated comments, replies, and saved posts have been deleted"
+      );
   } catch (error) {
     next(error);
   }
