@@ -356,7 +356,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <Button
                 type="button"
                 size="sm"
-                gradientDuoTone="purpleToBlue"
+                className="mt-2 !bg-violet-500 hover:!bg-violet-600"
                 onClick={handleSave}
               >
                 Save
@@ -364,8 +364,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
               <Button
                 type="button"
                 size="sm"
-                gradientDuoTone="purpleToBlue"
-                outline
+                className="!bg-red-400 hover:!bg-red-500 mt-2 !text-black"
                 onClick={() => setIsEditing(false)}
               >
                 Cancel
