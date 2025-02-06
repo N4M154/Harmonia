@@ -215,7 +215,7 @@ function Home() {
   return (
     <div className="text-violet-700/50 dark:text-white/60">
       {/* Initial View */}
-      <div className="h-screen relative bg-gradient-to-b from-violet-300 to-violet-100 dark:from-[#18181b] dark:to-violet-800 pointer-events-none">
+      <div className="h-screen relative bg-gradient-to-b from-violet-300 to-violet-100 dark:from-[#4f4d4d] dark:via-[#18181b] dark:to-violet-800 pointer-events-none">
         <div
           className="absolute inset-0 z-0 opacity-70 bg-[url('/gif.gif')] dark:bg-[url('/gif_dark.gif')]"
           style={{

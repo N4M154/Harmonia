@@ -221,15 +221,15 @@ export default function Header() {
   // );
 
   return (
-    <Navbar className="border-b-2 border-violet-200 dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
+    <Navbar className=" dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
       {/* Left side - Logo and Theme Toggle */}
       <div className="flex items-center">
         <Link
           to="/home"
           className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white flex items-center"
         >
-          <span className="text-violet-700 font-thin dark:text-violet-300 mr-5 ml-5">
-            N4M154
+          <span className="text-violet-700 text-[18px] font-thin dark:text-violet-300 mr-5 ml-5">
+            Harmonia
           </span>
         </Link>
         <ThemeToggle />
@@ -238,10 +238,10 @@ export default function Header() {
             <div className="relative group">
               <Button
                 type="button"
-                className="group relative ml-5 mr-5 w-12 h-12 rounded-full !bg-violet-400 border-2 dark:!border-violet-800 !border-violet-600/50 !text-violet-800 !shadow-lg hover:!shadow-xl hover:!shadow-black/60 !shadow-black/40 dark:!shadow-gray-600 dark:hover:!shadow-gray-600 hover:!scale-110 transition-all duration-300 overflow-hidden"
+                className="group relative ml-5 mr-5 w-10 h-10 rounded-full !bg-violet-400 border-2 dark:!border-violet-800 !border-violet-600/50 !text-violet-800 !shadow-lg hover:!shadow-xl hover:!shadow-black/60 !shadow-black/40 dark:!shadow-gray-600 dark:hover:!shadow-gray-600 hover:!scale-110 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-tr from-violet-300/0 to-violet-300/30 dark:from-white/0 dark:to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <Plus className="w-6 h-6 transform group-hover:rotate-90 group-hover:scale-110 transition-all duration-300" />
+                <Plus className="w-6 h-6 -my-[3px] transform group-hover:rotate-90 group-hover:scale-110 transition-all duration-300" />
                 <span className="absolute -inset-full group-hover:inset-0 bg-gradient-to-r from-violet-400/0 via-white/10 to-violet-400/0 group-hover:-translate-x-full transition-all duration-1000 ease-out" />
               </Button>
               {/* Tooltip positioned on the right */}
@@ -256,8 +256,7 @@ export default function Header() {
           </Link>
         )}
       </div>
-
-      {/* Center - Search (hidden on mobile) */}
+      {/* Search (hidden on mobile) */}
       <form
         onSubmit={handleSubmit}
         className="flex-grow justify-center hidden lg:flex"
@@ -266,12 +265,11 @@ export default function Header() {
           type="text"
           placeholder="Search..."
           rightIcon={AiOutlineSearch}
-          className="max-w-md w-full"
+          className="max-w-md !rounded-full"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-
       {/* Right side - Navigation and Profile */}
       <div className="flex items-center gap-4 mr-10">
         {/* Mobile Search Button */}
@@ -285,7 +283,7 @@ export default function Header() {
         {/* Navigation Links */}
         <Link
           to="/home"
-          className={`hidden md:flex items-center px-3 py-2 rounded-md transition-all duration-300
+          className={`hidden md:flex items-center px-2 py-1 rounded-md transition-all duration-300
             ${
               path === "/home"
                 ? "bg-violet-300/20 text-violet-700 scale-110 dark:text-violet-400 font-semibold"
@@ -297,11 +295,11 @@ export default function Header() {
 
         <Link
           to="/about"
-          className={`hidden md:flex items-center px-3 py-2 rounded-md transition-all duration-300
+          className={`hidden md:flex items-center px-2 py-1 rounded-md transition-all duration-300
             ${
               path === "/about"
-                ? "bg-violet-300/20 text-violet-700 scale-110 dark:text-violet-400 font-semibold"
-                : "text-black hover:bg-violet-300/20 hover:text-violet-700 dark:hover:text-violet-400 hover:scale-110 transition-all duration-300 dark:text-gray-300"
+                ? "bg-violet-300/20 text-violet-700 scale-110 text-sm dark:text-violet-400 font-thin"
+                : "text-black hover:bg-violet-300/20 hover:text-violet-700 dark:hover:text-violet-400 text-sm hover:scale-110 transition-all duration-300 dark:text-gray-300"
             }`}
         >
           About
