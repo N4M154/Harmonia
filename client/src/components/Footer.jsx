@@ -104,12 +104,17 @@ function App() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
           {/* Left Section */}
-          <div className="flex items-center -ml-[90px] justify-center md:justify-start gap-2">
-            <PiSnowflakeThin className="w-4 h-4 -mr-1 text-black dark:text-violet-300" />
-            <span className="text-sm text-black dark:text-violet-300 font-light">
-              N4M154
+          <div className="flex items-center -ml-[500px] justify-center md:justify-start gap-2 flex-col">
+            <div className="flex items-center gap-2 ml-[40px]">
+              <PiSnowflakeThin className="w-4 h-4 -mr-1 text-black dark:text-violet-300" />
+              <span className="text-sm text-black dark:text-violet-300 font-light">
+                N4M154
+              </span>
+              <PiSnowflakeThin className="w-4 h-4 -ml-1 text-black dark:text-violet-300" />
+            </div>
+            <span className="text-[10px] text-black dark:text-violet-300 font-normal ml-10">
+              © {new Date().getFullYear()} Harmonia.All rights reserved.
             </span>
-            <PiSnowflakeThin className="w-4 h-4 -ml-1 text-black dark:text-violet-300" />
           </div>
 
           {/* Middle Section - Top Songs */}
