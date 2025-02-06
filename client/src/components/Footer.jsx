@@ -160,7 +160,7 @@ function App() {
               className="flex items-center gap-2 text-black dark:text-violet-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
             >
               <Github className="w-5 h-5" />
-              <span className="text-sm">GitHub</span>
+              <span className="text-sm font-thin hover:underline">GitHub</span>
             </a>
             <div className="mx-4 h-5 w-px bg-black/30 dark:bg-violet-300/30" />
             <a
@@ -168,7 +168,9 @@ function App() {
               className="flex items-center gap-2 text-black dark:text-violet-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
             >
               <Mail className="w-5 h-5" />
-              <span className="text-sm">Namisa Najah</span>
+              <span className="text-sm font-thin hover:underline">
+                Namisa Najah
+              </span>
             </a>
           </div>
         </div>
