@@ -357,7 +357,7 @@ export default function DashComments() {
           )}
         </>
       ) : (
-        <p>You have no comments yet!</p>
+        <p className="font-thin text-gray-500">You have no comments yet!</p>
       )}
       <Modal
         show={showModal}

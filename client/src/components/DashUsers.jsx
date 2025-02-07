@@ -135,7 +135,7 @@ export default function DashUsers() {
           )}
         </>
       ) : (
-        <p>You have no users yet!</p>
+        <p className="font-thin text-gray-500">You have no users yet!</p>
       )}
       <Modal
         show={showModal}

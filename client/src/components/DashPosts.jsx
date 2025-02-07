@@ -153,7 +153,7 @@ export default function DashPosts() {
           )}
         </>
       ) : (
-        <p>You have no posts yet!</p>
+        <p className="font-thin text-gray-500">You have no posts yet!</p>
       )}
       <Modal
         show={showModal}
