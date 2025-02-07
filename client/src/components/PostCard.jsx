@@ -11,10 +11,10 @@ export default function PostCard({ post }) {
         />
       </Link>
       <div className="p-2 flex flex-col gap-2">
-        <p className="text-md font-semibold dark:text-white line-clamp-2">
+        <p className="text-md font-thin dark:text-white line-clamp-2">
           {post.title}
         </p>
-        <span className="italic text-sm dark:text-gray-300">
+        <span className="italic font-thin text-sm dark:text-gray-300">
           {post.category}
         </span>
         <Link
