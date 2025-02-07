@@ -107,10 +107,14 @@ export default function CreatePost() {
                 setFormData({ ...formData, category: e.target.value })
               }
             >
-              <option value="uncategorized">Select a category</option>
-              <option value="javascript">JavaScript</option>
-              <option value="reactjs">React.js</option>
-              <option value="nextjs">Next.js</option>
+              <option value="Casual">Casual</option>
+              <option value="Song | Album">Song | Album</option>
+              <option value="Artist | Legends">Artist | Legends</option>
+              <option value="Lyricism | Songwriting">
+                Lyricism | Songwriting
+              </option>
+              <option value="Soundtrack | Scores">Soundtrack | Scores</option>
+              <option value="Events | Accolades">Events | Accolades</option>
             </Select>
           </div>
           <div className="flex gap-4 items-center justify-between border-4 border-violet-500 border-dotted p-3">

@@ -7,7 +7,7 @@ export default function Search() {
   const [sidebarData, setSidebarData] = useState({
     searchTerm: "",
     sort: "desc",
-    category: "uncategorized",
+    category: "Casual",
   });
 
   console.log(sidebarData);
@@ -64,7 +64,7 @@ export default function Search() {
       setSidebarData({ ...sidebarData, sort: order });
     }
     if (e.target.id === "category") {
-      const category = e.target.value || "uncategorized";
+      const category = e.target.value || "Casual";
       setSidebarData({ ...sidebarData, category });
     }
   };
@@ -130,10 +130,14 @@ export default function Search() {
               value={sidebarData.category}
               id="category"
             >
-              <option value="uncategorized">Uncategorized</option>
-              <option value="reactjs">React.js</option>
-              <option value="nextjs">Next.js</option>
-              <option value="javascript">JavaScript</option>
+              <option value="Casual">Casual</option>
+              <option value="Song | Album">Song | Album</option>
+              <option value="Artist | Legends">Artist | Legends</option>
+              <option value="Lyricism | Songwriting">
+                Lyricism | Songwriting
+              </option>
+              <option value="Soundtrack | Scores">Soundtrack | Scores</option>
+              <option value="Events | Accolades">Events | Accolades</option>
             </Select>
           </div>
           <Button
