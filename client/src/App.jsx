@@ -17,6 +17,7 @@ import Search from "./pages/Search";
 import Layout from "./components/Layout";
 import Landing from "./pages/Landing";
 import SuggestionForm from "./pages/SuggestionForm";
+import LyricCardMaker from "./pages/LyricCardMaker";
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           <Route path="/suggest" element={<SuggestionForm />} />
+          <Route path="/lyric-card" element={<LyricCardMaker />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
