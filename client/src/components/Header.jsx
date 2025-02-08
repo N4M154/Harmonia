@@ -5,7 +5,8 @@ import { HiHome } from "react-icons/hi2";
 import { Lightbulb, LogOut, Plus } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
-import { useEffect, useState } from "react";
+import { ChevronDown, Telescope } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 // import { toggleTheme } from "../redux/theme/themeSlice";
 import ThemeToggle from "./ThemeToggle";
 
@@ -16,6 +17,8 @@ export default function Header() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   //const [isCollapsed, setIsCollapsed] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -25,6 +28,22 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false); // Close the menu
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   // Detect window resize to update isCollapsed state
   // useEffect(() => {
@@ -295,7 +314,7 @@ export default function Header() {
 
         <Link
           to="/about"
-          className={`hidden md:flex items-center px-2 py-1 rounded-md transition-all duration-300
+          className={`hidden font-thin md:flex items-center px-2 py-1 rounded-md transition-all duration-300
             ${
               path === "/about"
                 ? "bg-violet-300/20 text-violet-700 scale-110 text-sm dark:text-violet-400 font-thin"
@@ -304,6 +323,53 @@ export default function Header() {
         >
           About
         </Link>
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="font-thin flex items-center gap-2 px-4 py-2 text-sm rounded-full border border-violet-300 dark:border-violet-900
+                   bg-transparent hover:scale-105 transition-all duration-200 hover:bg-violet-300/20 dark:text-white"
+          >
+            {" "}
+            <Telescope className="w-6 h-6 text-violet-500" />
+            Explore
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {isOpen && (
+            <div
+              className="absolute z-10 mt-2 w-48 rounded-md shadow-lg 
+                        bg-violet-50 dark:bg-black 
+                        border border-violet-200 dark:border-violet-950/70"
+            >
+              <div className="py-1">
+                <Link
+                  to="/lyric-card"
+                  className="block px-4 py-2 text-sm text-black dark:text-white
+                         hover:bg-violet-200 dark:hover:bg-violet-700/40 hover:scale-105
+                         transition-all duration-200 font-thin"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Lyric Card Maker
+                </Link>
+                <div className="border-t border-violet-200 dark:border-violet-950/70 my-1"></div>
+                <Link
+                  to="/suggest"
+                  className="px-4 py-2 text-sm text-black dark:text-white
+                 hover:bg-violet-200 dark:hover:bg-violet-700/40 hover:scale-105
+                 transition-all duration-200 font-thin flex items-center gap-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Have a suggestion?
+                  <Lightbulb className="w-6 h-6 text-yellow-300 drop-shadow-[0_0_4px_rgba(255,234,0,1)]" />
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Profile Dropdown */}
         {currentUser ? (
@@ -327,13 +393,13 @@ export default function Header() {
               </Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Link to="/suggest">
+            {/* <Link to="/suggest">
               <Dropdown.Item className="hover:!bg-violet-200 dark:hover:!bg-violet-700/40 flex items-center gap-2">
                 Have a suggestion?
                 <Lightbulb className="w-6 h-6 text-yellow-300 drop-shadow-[0_0_4px_rgba(255,234,0,1)]" />
               </Dropdown.Item>
             </Link>{" "}
-            <Dropdown.Divider />
+            <Dropdown.Divider /> */}
             <Dropdown.Item
               className="flex justify-center items-center hover:scale-110 transition-all duration-300 hover:rounded-full hover:!bg-violet-200 dark:hover:!bg-violet-700/40"
               onClick={handleSignout}
