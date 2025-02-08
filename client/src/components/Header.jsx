@@ -2,10 +2,16 @@ import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiHome } from "react-icons/hi2";
-import { Lightbulb, LogOut, Plus } from "lucide-react";
+import {
+  Lightbulb,
+  LogOut,
+  Plus,
+  ChevronDown,
+  Telescope,
+  Music2,
+} from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
-import { ChevronDown, Telescope } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 // import { toggleTheme } from "../redux/theme/themeSlice";
 import ThemeToggle from "./ThemeToggle";
@@ -348,12 +354,13 @@ export default function Header() {
               <div className="py-1">
                 <Link
                   to="/lyric-card"
-                  className="block px-4 py-2 text-sm text-black dark:text-white
+                  className="px-4 py-2 text-sm text-black dark:text-white
                          hover:bg-violet-200 dark:hover:bg-violet-700/40 hover:scale-105
-                         transition-all duration-200 font-thin"
+                         transition-all duration-200 font-thin flex items-center gap-2"
                   onClick={() => setIsOpen(false)}
                 >
                   Lyric Card Maker
+                  <Music2 className="w-5 h-5 text-rose-400 drop-shadow-[0_0_6px_rgba(163,49,83,1)]" />
                 </Link>
                 <div className="border-t border-violet-200 dark:border-violet-950/70 my-1"></div>
                 <Link
