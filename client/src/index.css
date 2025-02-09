@@ -70,5 +70,5 @@ body {
 
 /* Custom style for ReactQuill placeholder */
 .custom-placeholder .ql-editor::before {
-  color: #a0a0a0; /* Change this color to your preferred placeholder color */
+  color: #a0a0a0;
 }
