@@ -9,6 +9,7 @@ import {
   ChevronDown,
   Telescope,
   Music2,
+  Shuffle,
 } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
@@ -361,6 +362,17 @@ export default function Header() {
                 >
                   Lyric Card Maker
                   <Music2 className="w-5 h-5 text-rose-400 drop-shadow-[0_0_6px_rgba(163,49,83,1)]" />
+                </Link>
+                <div className="border-t border-violet-200 dark:border-violet-950/70 my-1"></div>
+                <Link
+                  to="/music"
+                  className="px-4 py-2 text-sm text-black dark:text-white
+                 hover:bg-violet-200 dark:hover:bg-violet-700/40 hover:scale-105
+                 transition-all duration-200 font-thin flex items-center gap-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Mood Based Playlist
+                  <Shuffle className="w-5 h-5 text-blue-700 drop-shadow-[0_0_4px_rgba(35,64,145,1)]" />
                 </Link>
                 <div className="border-t border-violet-200 dark:border-violet-950/70 my-1"></div>
                 <Link
