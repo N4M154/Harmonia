@@ -12,6 +12,24 @@ const MoodBasedMusicGenerator = () => {
   const [playlist, setPlaylist] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const playlistNamesMap = {
+    cozy: "Blanket Fort Vibes",
+    chill: "Sunday Morning Sunshine",
+    lofi: "Late Night Coding Sessions",
+    instrumental: "Background Brain Food",
+    dreamo: "Cloud Nine Daydreams",
+    nostalgic: "Time Machine Tunes",
+    energetic: "Power Hour Push",
+    party: "Weekend Warriors Unite",
+    rage: "Midnight Mosh Pit",
+    dark: "Shadow Sounds After Dark",
+    happy: "Good Vibes Only",
+    sad: "Midnight Blues",
+    anime: "Anime Main Character Moments",
+    rock: "Garage Band Heroes",
+  };
+
+  const playlistName = playlistNamesMap[mood.toLowerCase()] || `${mood} Mix`;
   const fetchMoodBasedMusic = async () => {
     if (!mood) {
       alert("Please select a mood.");
@@ -47,6 +65,7 @@ const MoodBasedMusicGenerator = () => {
         rage: "rage playlist",
         dark: "dark moody playlist",
         happy: "happy playlist",
+        sad: "sad playlist",
         anime: "anime music",
         rock: "rock playlist",
       };
@@ -115,6 +134,7 @@ const MoodBasedMusicGenerator = () => {
             <option value="Rage">Rage</option>
             <option value="Dark">Dark Moody</option>
             <option value="Happy">Happy</option>
+            <option value="Sad">Blues</option>
             <option value="Anime">Anime</option>
             <option value="Rock">Rock</option>
           </select>
@@ -148,7 +168,7 @@ const MoodBasedMusicGenerator = () => {
                   Playlist
                 </h6>
                 <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-violet-500 to-violet-700 dark:from-violet-300 dark:to-violet-600 bg-clip-text text-transparent leading-[1.2] py-1">
-                  {mood} Mix
+                  {playlistName}
                 </h1>
                 <p className="text-gray-500 dark:text-violet-300">
                   Made for{" "}
