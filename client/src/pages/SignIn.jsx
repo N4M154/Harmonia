@@ -175,7 +175,7 @@ export default function SignIn() {
         }}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <h1 className="text-2xl font-light text-violet-500 ml-5">N4M154</h1>
+          <h1 className="text-xl font-light text-violet-500 ml-5">N4M154</h1>
           <nav className="hidden md:flex space-x-6"></nav>
           <div className="mr-5">
             <ThemeToggle />
