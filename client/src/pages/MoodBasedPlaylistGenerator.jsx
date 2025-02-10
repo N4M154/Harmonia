@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Play, Shuffle } from "lucide-react";
+import { Play } from "lucide-react";
+// import { Play, Shuffle } from "lucide-react";
 
 const SPOTIFY_CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
@@ -105,6 +106,25 @@ const MoodBasedMusicGenerator = () => {
       setLoading(false);
     }
   };
+  const moodBackgroundsMap = {
+    cozy: "/cozy.jpg",
+    chill: "/chill.jpg",
+    lofi: "/lofi.jpg",
+    instrumental: "/instrumental.jpg",
+    dreamo: "/dreamo.jpg",
+    nostalgic: "/nostalgic.jpg",
+    energetic: "/energetic.jpg",
+    party: "/party.jpg",
+    rage: "/rage.jpg",
+    dark: "/dark.jpg",
+    happy: "/happy.jpg",
+    sad: "/sad.jpg",
+    anime: "/anime.jpg",
+    rock: "/rock.jpg",
+  };
+
+  const playlistBackground =
+    moodBackgroundsMap[mood.toLowerCase()] || "/musicdemo.jpg";
 
   const formatDuration = (ms) => {
     const minutes = Math.floor(ms / 60000);
@@ -157,12 +177,21 @@ const MoodBasedMusicGenerator = () => {
           <div className="bg-gray-50 dark:bg-[#18181b] rounded-lg p-6 shadow-xl shadow-gray-200/50 dark:shadow-violet-500/5">
             {/* Playlist Header */}
             <div className="flex items-end gap-6 mb-8">
-              <div className="w-52 h-52 bg-gradient-to-br from-violet-200 to-violet-700 dark:from-violet-500 dark:to-violet-900 shadow-2xl rounded-md flex items-center justify-center group transition-transform duration-300 hover:scale-105">
-                <Shuffle
+              <div
+                className="w-52 h-52 rounded-md flex items-center justify-center group transition-transform duration-300 hover:scale-105"
+                style={{
+                  backgroundImage: `url(${playlistBackground})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                }}
+              >
+                {/* <Shuffle
                   size={64}
                   className="text-white opacity-80 group-hover:opacity-100 transition-opacity"
-                />
+                /> */}
               </div>
+              ;
               <div>
                 <h6 className="text-sm uppercase text-black font-thin dark:text-violet-400 tracking-wider dark:font-medium">
                   Playlist
