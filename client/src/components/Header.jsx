@@ -247,7 +247,13 @@ export default function Header() {
   // );
 
   return (
-    <Navbar className=" dark:border-gray-800 bg-violet-100 dark:bg-[#18181b]">
+    <Navbar
+      className={`dark:border-gray-800 bg-violet-100 dark:bg-[#18181b] ${
+        path === "/home"
+          ? "sticky top-0 z-50 backdrop-blur-md transition-all duration-300 bg-violet-300/40 dark:bg-black/90"
+          : ""
+      }`}
+    >
       {/* Left side - Logo and Theme Toggle */}
       <div className="flex items-center">
         <Link
