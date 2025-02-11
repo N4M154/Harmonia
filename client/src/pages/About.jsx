@@ -39,7 +39,7 @@ export default function About() {
           {/* Feature Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 my-12">
             <div className="flex flex-col items-center text-center">
-              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4">
+              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4 hover:-translate-y-2 transition-all duration-300">
                 <BookOpen className="h-8 w-8 text-violet-700" />
               </div>
               <h3 className="font-semibold mb-2 dark:text-violet-300">
@@ -52,7 +52,7 @@ export default function About() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4">
+              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4 hover:-translate-y-2 transition-all duration-300">
                 <Music className="h-8 w-8 text-violet-700" />
               </div>
               <h3 className="font-semibold mb-2 dark:text-violet-300">
@@ -64,7 +64,7 @@ export default function About() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4">
+              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4 hover:-translate-y-2 transition-all duration-300">
                 <Sparkles className="h-8 w-8 text-violet-700" />
               </div>
               <h3 className="font-semibold mb-2 dark:text-violet-300">
@@ -76,7 +76,7 @@ export default function About() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4">
+              <div className="h-14 w-14 rounded-full bg-violet-300 flex items-center justify-center mb-4 hover:-translate-y-2 transition-all duration-300">
                 <HeartHandshake className="h-8 w-8 text-violet-700" />
               </div>
               <h3 className="font-semibold mb-2 dark:text-violet-300">
