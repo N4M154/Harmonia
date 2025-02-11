@@ -22,6 +22,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import PostCard from "../components/PostCard";
 import { Link } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -79,6 +80,7 @@ function Home() {
 
   return (
     <div>
+      <ScrollToTop />
       {/* Initial View */}
       <div className="h-screen relative bg-gradient-to-b from-violet-300 to-violet-100 dark:from-[#18181b] dark:via-[#18181b] dark:to-violet-800 pointer-events-none">
         <div
