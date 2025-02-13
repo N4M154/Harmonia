@@ -2,7 +2,20 @@
 
 Hey there! Welcome to **Harmonia**, where music and emotions come together in the most fun and unique way. Whether you're looking to create stunning lyric art, explore mood-based playlists, or just vibe with some awesome music-related content, you've found the right place. Let’s dive in and make your musical experience even more amazing! 😎🎧
 
+## ⚡Quick Start Guide
+
+1. **Create your account:** Sign up or log in to get your personalized journey started.
+2. **Engage with the community:** Explore recent blog posts and engage in intriguing conversations with the public.
+3. **Explore the tools:** Create your lyric cards or generate your personalized mood music.
+4. **Help us improve by giving your precious suggestions.**
+
 ## ✨ Features
+
+### Personalized profile and Security
+
+Create an account to get started and keep track of your journey on your personal dashboard.
+
+- **Admin portal** and **User portal** (Check the env sample to get an inside scoop!)
 
 ### 📝 Blog & Community
 
@@ -59,24 +72,32 @@ Your ideas shape our future.
 ## ⚙️ Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/N4M154/Harmonia.git
    ```
+
 2. **Install dependencies for the backend**
+
    ```bash
    cd api
    npm install
    ```
+
 3. **Install dependencies for the frontend**
+
    ```bash
    cd client
    npm install
    ```
+
 4. **Install dependencies for the root**
+
    ```bash
    cd ..
    npm install
    ```
+
 5. **Add environment variables in the root `.env` file**
 
 ```bash
@@ -94,10 +115,12 @@ VITE_CLIENT_SECRET = <YOUR_SPOTIFY_DEVELOPER_API_CLIENT_SECRET>
 ```
 
 7. **Start the development server (client and api)**
+
    ```bash
    cd client
    npm run dev
    ```
+
    ```bash
    cd api
    npm run dev
