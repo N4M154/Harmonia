@@ -191,7 +191,6 @@ const MoodBasedMusicGenerator = () => {
                   className="text-white opacity-80 group-hover:opacity-100 transition-opacity"
                 /> */}
               </div>
-              ;
               <div>
                 <h6 className="text-sm uppercase text-black font-thin dark:text-violet-400 tracking-wider dark:font-medium">
                   Playlist
