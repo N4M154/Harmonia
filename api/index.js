@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
@@ -23,6 +24,12 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+app.use(
+  cors({
+    origin: "https://localhost:5173", // Frontend origin
+    credentials: true, // Allow credentials (cookies)
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
