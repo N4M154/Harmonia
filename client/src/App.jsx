@@ -19,6 +19,7 @@ import Landing from "./pages/Landing";
 import SuggestionForm from "./pages/SuggestionForm";
 import LyricCardMaker from "./pages/LyricCardMaker";
 import Mood from "./pages/MoodBasedPlaylistGenerator";
+import Song from "./pages/Upload";
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/suggest" element={<SuggestionForm />} />
           <Route path="/lyric-card" element={<LyricCardMaker />} />
           <Route path="/music" element={<Mood />} />
+          <Route path="/upload" element={<Song />} />
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
