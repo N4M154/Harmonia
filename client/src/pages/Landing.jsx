@@ -1,5 +1,12 @@
 import { useRef } from "react";
-import { Newspaper, Music2, Shuffle, Lightbulb, Sparkles } from "lucide-react";
+import {
+  Newspaper,
+  Music2,
+  Shuffle,
+  Lightbulb,
+  Sparkles,
+  AudioLines,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
 
@@ -84,6 +91,10 @@ export function Landing() {
                   ),
                   label: "Blog",
                 },
+                {
+                  icon: <AudioLines className="w-6 h-6 text-teal-400" />,
+                  label: "Music",
+                },
 
                 {
                   icon: <Music2 className="w-6 h-6 text-rose-400" />,
@@ -127,7 +138,7 @@ export function Landing() {
             </span>{" "}
             Features
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
               {
                 icon: (
@@ -136,6 +147,14 @@ export function Landing() {
                 title: "Blog",
                 description:
                   "Dive into the latest, hottest blog posts and get in on the action with your thoughts and comments!",
+              },
+              {
+                icon: (
+                  <AudioLines className="w-10 h-10 mb-2 text-teal-400 drop-shadow-[0_0_8px_rgba(69,245,204,1)] hover:scale-105 transition-all duration-200" />
+                ),
+                title: "Share Your Music",
+                description:
+                  "Want to share your music with the world?Upload your audio files and tell your stories for everyont to enjoy!",
               },
               {
                 icon: (
@@ -172,7 +191,7 @@ export function Landing() {
                 <h3 className="text-2xl font-thin text-black dark:text-violet-500 mb-4 group-hover:text-gray-500 dark:group-hover:text-violet-300 transition-colors duration-200">
                   {feature.title}
                 </h3>
-                <p className="text-violet-800 group-hover:text-violet-700 dark:text-gray-300 dark:group-hover:text-gray-400 transition-colors duration-300 font-thin text-justify">
+                <p className="text-sm text-violet-800 group-hover:text-violet-700 dark:text-gray-300 dark:group-hover:text-gray-400 transition-colors duration-300 font-thin text-justify">
                   {feature.description}
                 </p>
               </div>

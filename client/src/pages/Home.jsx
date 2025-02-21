@@ -17,6 +17,9 @@ import {
   Search,
   Palette,
   Share2,
+  AudioLines,
+  Headphones,
+  UploadCloud,
 } from "lucide-react";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -41,6 +44,13 @@ function Home() {
   const handleExploreBlog = () => {
     if (blogRef.current) {
       blogRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const musicRef = useRef(null);
+  const handleExploreMusic = () => {
+    if (musicRef.current) {
+      musicRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -122,6 +132,22 @@ function Home() {
 
             <div className="mt-10 relative group">
               <button
+                onClick={handleExploreMusic}
+                className="px-5 py-5 bg-gradient-to-tr from-transparent to-violet-500 rounded-lg shadow-lg hover:scale-105 hover:opacity-80 duration-300"
+              >
+                <AudioLines className="w-8 h-8 text-teal-400 mix-blend-multiply dark:mix-blend-screen" />
+              </button>
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 hidden group-hover:block">
+                <div className="relative bg-transparent text-teal-800 font-thin dark:text-teal-100 px-3 py-1.5 text-sm rounded-sm border border-teal-300 dark:border-teal-700 shadow-lg">
+                  <div className="absolute left-1/2 transform -translate-x-1/2 -top-1 w-2 h-2 bg-teal-200 dark:bg-teal-900 border-t border-l border-teal-400 dark:border-teal-700 rotate-45"></div>
+                  <span className="text-xs">Share your music</span>
+                </div>
+              </div>
+              <ChevronDown className="ml-6 mt-2 text-teal-300 animate-bounce" />
+            </div>
+
+            <div className="mt-20 relative group">
+              <button
                 onClick={handleExploreLyric}
                 className="px-5 py-5 bg-gradient-to-tr from-transparent to-violet-500 rounded-lg shadow-lg hover:scale-105 hover:opacity-80 duration-300"
               >
@@ -135,6 +161,7 @@ function Home() {
               </div>
               <ChevronDown className="ml-6 mt-2 text-rose-300 animate-bounce" />
             </div>
+
             <div className="mt-10 relative group">
               <button
                 onClick={handleExplorePlaylist}
@@ -231,6 +258,106 @@ function Home() {
             >
               View all posts
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Music */}
+      <section
+        ref={musicRef}
+        className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-200 dark:from-[#18181b] dark:to-black relative overflow-hidden"
+      >
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-teal-400/30 dark:bg-teal-400/10 rounded-full blur-3xl animate-pulse-ring"></div>
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-violet-400/30 dark:bg-violet-400/10 rounded-full blur-3xl animate-pulse-ring"
+            style={{ animationDelay: "-1.5s" }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-400/30 dark:bg-purple-400/10 rounded-full blur-3xl animate-pulse-ring"
+            style={{ animationDelay: "-0.75s" }}
+          ></div>
+        </div>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+          <div className="mt-10 grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Content */}
+            <div className="space-y-12">
+              {/* Header */}
+              <div className="space-y-8">
+                <Link to="/upload">
+                  <div className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full glass-card hover:glass-card-hover transition-all duration-500">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400/20 to-violet-400/20 animate-pulse-ring"></div>
+                    <AudioLines className="w-6 h-6 text-teal-500 dark:text-teal-300 animate-wave" />
+                    <span className="text-sm font-medium text-gray-800 dark:text-teal-200 group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors">
+                      Share your music
+                    </span>
+                  </div>
+                </Link>
+
+                <h1 className="text-[45px] font-bold">
+                  <span className="block bg-gradient-to-r from-teal-400 via-violet-500 to-purple-600 dark:from-teal-300 dark:via-violet-400 dark:to-purple-500 bg-clip-text text-transparent">
+                    Let the world hear your tunes
+                  </span>
+                </h1>
+
+                <p className="text-lg font-light text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed">
+                  Share your musical talents with the world and become part of a
+                  vibrant community of artists and listeners.
+                </p>
+              </div>
+
+              {/* Feature Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: UploadCloud,
+                    title: "Upload Your Music",
+                    description:
+                      "Share your music and artwork with the world. Let others enjoy your creative expression.",
+                  },
+                  {
+                    icon: Headphones,
+                    title: "Listen & Download",
+                    description:
+                      "Enjoy music from different artists online or download your favorite tunes for offline listening.",
+                  },
+                  {
+                    icon: Music,
+                    title: "Discover Artists",
+                    description:
+                      "Explore music from different genres and discover emerging artists that match your taste.",
+                  },
+                ].map((feature, index) => (
+                  <div
+                    key={index}
+                    className="group glass-card rounded-2xl p-6 transition-all duration-500 hover:glass-card-hover"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  >
+                    <feature.icon className="w-8 h-8 text-violet-500 dark:text-violet-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-violet-300 group-hover:text-violet-600 dark:group-hover:text-violet-200 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="font-light text-gray-600 dark:text-gray-400 text-sm mt-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative hidden lg:block">
+              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-teal-400/20 rounded-3xl blur-2xl animate-pulse-ring"></div>
+              <img
+                src="/cozy.jpg"
+                alt="Music Studio"
+                className="scale-90 object-cover rounded-3xl glass-card animate-float shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-violet-500/30 dark:bg-violet-500/20 rounded-full blur-2xl"></div>
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-teal-500/30 dark:bg-teal-500/20 rounded-full blur-2xl"></div>
+            </div>
           </div>
         </div>
       </section>

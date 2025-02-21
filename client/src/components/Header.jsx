@@ -10,6 +10,7 @@ import {
   Telescope,
   Music2,
   Shuffle,
+  AudioLines,
 } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { signoutSuccess } from "../redux/user/userSlice";
@@ -359,6 +360,17 @@ export default function Header() {
                         border border-violet-200 dark:border-violet-950/70"
             >
               <div className="py-1">
+                <Link
+                  to="/upload"
+                  className="px-4 py-2 text-sm text-black dark:text-white
+                         hover:bg-violet-200 dark:hover:bg-violet-700/40 hover:scale-105
+                         transition-all duration-200 font-thin flex items-center gap-2"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Share your music
+                  <AudioLines className="w-5 h-5 text-teal-400 drop-shadow-[0_0_6px_rgba(32,128,105,1)]" />
+                </Link>
+                <div className="border-t border-violet-200 dark:border-violet-950/70 my-1"></div>
                 <Link
                   to="/lyric-card"
                   className="px-4 py-2 text-sm text-black dark:text-white
