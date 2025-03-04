@@ -347,16 +347,27 @@ function Home() {
               </div>
             </div>
 
-            {/* Right Column - Image */}
-            <div className="relative hidden lg:block">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-teal-400/20 rounded-3xl blur-2xl animate-pulse-ring"></div>
-              <img
-                src="/cozy.jpg"
-                alt="Music Studio"
-                className="scale-90 object-cover rounded-3xl glass-card animate-float shadow-2xl"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-violet-500/30 dark:bg-violet-500/20 rounded-full blur-2xl"></div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-teal-500/30 dark:bg-teal-500/20 rounded-full blur-2xl"></div>
+            {/* Right Column - Two Tilted Images */}
+            <div className="relative hidden lg:flex items-center justify-center gap-6">
+              {/* First Image - Tilted Left */}
+              <div className="relative w-full h-full transform rotate-[-10deg]">
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-400/20 to-teal-400/20 rounded-2xl blur-2xl animate-pulse-ring"></div>
+                <img
+                  src="/upload1.png"
+                  alt="Music Studio 1"
+                  className="object-cover w-full h-full rounded-2xl shadow-xl"
+                />
+              </div>
+
+              {/* Second Image - Tilted Right */}
+              <div className="relative w-full h-full transform rotate-[10deg]">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-violet-400/20 rounded-2xl blur-2xl animate-pulse-ring"></div>
+                <img
+                  src="/upload2.png"
+                  alt="Music Studio 2"
+                  className="object-cover w-full h-full rounded-2xl shadow-xl"
+                />
+              </div>
             </div>
           </div>
         </div>

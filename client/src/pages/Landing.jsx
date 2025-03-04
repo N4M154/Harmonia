@@ -154,7 +154,7 @@ export function Landing() {
                 ),
                 title: "Share Your Music",
                 description:
-                  "Want to share your music with the world?Upload your audio files and tell your stories for everyont to enjoy!",
+                  "Share your music with the world! Upload your music, tell your unique stories, and join a community of passionate listeners and creators.",
               },
               {
                 icon: (
