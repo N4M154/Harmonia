@@ -10,6 +10,8 @@ import suggestionRoutes from "./routes/suggestion.route.js";
 import audioRoutes from "./routes/audio.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -25,6 +27,8 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+
+//CORS
 app.use(
   cors({
     origin: "https://localhost:5173", // Frontend origin
@@ -39,6 +43,16 @@ app.listen(3000, () => {
   console.log("Server is running on port 3000!");
 });
 
+//DDoS
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: "Too many requests, please try again later.",
+});
+
+app.use(limiter);
+//helmet
+app.use(helmet());
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
