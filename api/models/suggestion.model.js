@@ -4,7 +4,7 @@ const suggestionSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Referencing the User model
+      ref: "User",
       required: true,
     },
     subject: {
@@ -18,10 +18,10 @@ const suggestionSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      default: Date.now, // Automatically set the current date/time
+      default: Date.now,
     },
   },
-  { timestamps: true } // Adds createdAt and updatedAt automatically
+  { timestamps: true }
 );
 
 const Suggestion = mongoose.model("Suggestion", suggestionSchema);
