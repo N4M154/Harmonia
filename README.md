@@ -41,6 +41,14 @@ Let your emotions guide your music experience.
 - **Instant Mix**: Get your perfect playlist in seconds
 - **Spotify Integration**: Powered by Spotify for Developers API
 
+### 🎶 Share your music with the world
+
+Share your music or let others know about a song you love.
+
+- **Upload your music**: Upload your own music or the music you love for other to enjoy
+- **Share your artwork**: Show off your artwork along with your music
+- **Listen or Download**: Listen to all the music online or download them for listening later
+
 ### 💡 Community-Driven Development
 
 Your ideas shape our future.
