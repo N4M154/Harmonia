@@ -109,17 +109,21 @@ Your ideas shape our future.
 5. **Add environment variables in the root `.env` file**
 
 ```bash
-MONGO = <YOUR_MONGODB_CONNECTION_STRING>
-JWT_SECRET = <YOUR_JWT_SECRET>
+MONGO = <MongoDB_connection_string>
+JWT_SECRET = <jwt_secret>
+CLOUD_NAME = <Cloudinary_cloud_name>
+API_KEY = <Cloudinary_api_key>
+API_SECRET = <Cloudinary_api_secret>
 ```
 
-6. **Add environment variables in the root `.env` file**
+6. **Add environment variables in the client `.env` file**
 
 ```bash
-VITE_FIREBASE_API_KEY = <YOUR_FIREBASE_API_KEY>
-VITE_LASTFM_API_KEY = <YOUR_LASTFM_API_KEY>
-VITE_CLIENT_ID = <YOUR_SPOTIFY_DEVELOPER_API_CLIENT_ID>
-VITE_CLIENT_SECRET = <YOUR_SPOTIFY_DEVELOPER_API_CLIENT_SECRET>
+VITE_FIREBASE_API_KEY = <firebase_api_key>
+VITE_LASTFM_API_KEY = <lastfm_api_key>
+VITE_CLIENT_ID = <spotify_client_id>
+VITE_CLIENT_SECRET = <spotify_client_secret>
+VITE_GROQ_API_KEY = <groq_api_key>
 ```
 
 7. **Start the development server (client and api)**
