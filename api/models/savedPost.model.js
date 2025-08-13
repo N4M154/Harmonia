@@ -1,4 +1,3 @@
-// savedPost.model.js
 import mongoose from "mongoose";
 
 const savedPostSchema = new mongoose.Schema(

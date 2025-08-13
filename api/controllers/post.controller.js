@@ -208,8 +208,8 @@ export const getSavedPosts = async (req, res, next) => {
   try {
     // Find saved posts by the user
     const savedPosts = await SavedPost.find({ user: req.user.id })
-      .populate("post") // Populate the post details
-      .sort({ saveDate: -1 }); // Sort by the save date (most recent first)
+      .populate("post")
+      .sort({ saveDate: -1 });
 
     res.status(200).json(savedPosts);
   } catch (error) {

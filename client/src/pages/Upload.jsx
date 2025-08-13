@@ -167,7 +167,7 @@ export default function Upload() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100 dark:from-[#18181b] dark:to-black relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100 dark:from-[#18181b] dark:to-black relative overflow-hidden pointer-events-none">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div
