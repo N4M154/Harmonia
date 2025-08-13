@@ -52,7 +52,24 @@ const limiter = rateLimit({
 
 app.use(limiter);
 //helmet
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://apis.google.com"],
+        connectSrc: [
+          "'self'",
+          "https://securetoken.googleapis.com",
+          "https://apis.google.com",
+        ],
+        imgSrc: ["'self'", "data:", "https://apis.google.com"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+      },
+    },
+  })
+);
+
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
