@@ -11,7 +11,7 @@ import audioRoutes from "./routes/audio.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import rateLimit from "express-rate-limit";
-import helmet from "helmet";
+// import helmet from "helmet";
 
 dotenv.config();
 
@@ -52,23 +52,23 @@ const limiter = rateLimit({
 
 app.use(limiter);
 //helmet
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://apis.google.com"],
-        connectSrc: [
-          "'self'",
-          "https://securetoken.googleapis.com",
-          "https://apis.google.com",
-        ],
-        imgSrc: ["'self'", "data:", "https://apis.google.com"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-      },
-    },
-  })
-);
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         defaultSrc: ["'self'"],
+//         scriptSrc: ["'self'", "https://apis.google.com"],
+//         connectSrc: [
+//           "'self'",
+//           "https://securetoken.googleapis.com",
+//           "https://apis.google.com",
+//         ],
+//         imgSrc: ["'self'", "data:", "https://apis.google.com"],
+//         styleSrc: ["'self'", "'unsafe-inline'"],
+//       },
+//     },
+//   })
+// );
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
